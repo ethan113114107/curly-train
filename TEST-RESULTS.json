@@ -1,0 +1,232 @@
+{
+  "static": [
+    {
+      "page": "index.html",
+      "html_structure": true,
+      "relative_links_media": true,
+      "inline_css_js": true
+    },
+    {
+      "page": "404.html",
+      "html_structure": true,
+      "relative_links_media": true,
+      "inline_css_js": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "html_structure": true,
+      "relative_links_media": true,
+      "inline_css_js": true
+    },
+    {
+      "page": "studentworks.html",
+      "html_structure": true,
+      "relative_links_media": true,
+      "inline_css_js": true
+    }
+  ],
+  "local_http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "404.html",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": ".nojekyll",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "ai-collaboration.html",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "studentworks.html",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "AI-COLLABORATION-FULL.txt",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/work-circular.svg",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/brand-mark.svg",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/learning-space.svg",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/work-sort.svg",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/hero-world.svg",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/work-ai.svg",
+      "status": 200,
+      "bytes_match": true
+    },
+    {
+      "path": "graph/learning-intro.mp4",
+      "status": 200,
+      "bytes_match": true
+    }
+  ],
+  "views": [
+    {
+      "page": "index.html",
+      "width": 1440,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "studentworks.html",
+      "width": 1440,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "width": 1440,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "index.html",
+      "width": 1024,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "studentworks.html",
+      "width": 1024,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "width": 1024,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "index.html",
+      "width": 820,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "studentworks.html",
+      "width": 820,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "width": 820,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "index.html",
+      "width": 768,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "studentworks.html",
+      "width": 768,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "width": 768,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "studentworks.html",
+      "width": 390,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "width": 390,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "index.html",
+      "width": 320,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "studentworks.html",
+      "width": 320,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    },
+    {
+      "page": "ai-collaboration.html",
+      "width": 320,
+      "no_horizontal_overflow": true,
+      "visible_images_loaded": true
+    }
+  ],
+  "functional": [
+    "tablet_menu_escape",
+    "mobile_menu",
+    "search_filters_no_results_reset",
+    "project_details_modal",
+    "local_mp4_playback",
+    "nine_prompts_expand_collapse_copy"
+  ],
+  "errors": [],
+  "mode": "Isolated DOM rendering. Only the in-memory QA copy embeds local media; exported HTML retains graph/ paths.",
+  "video": {
+    "duration": 16,
+    "current_time": 1.025858,
+    "error": null
+  },
+  "clipboard_message": "已複製九則 Prompt 與後補筆記，請閱讀確認後繳交。",
+  "passed": true
+}

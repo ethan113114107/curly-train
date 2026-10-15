@@ -1,0 +1,14 @@
+{
+  "version": "tcu-academic-final-20261015",
+  "repository": "ethan113114107/ethan113114107.github.io",
+  "intended_url": "https://ethan113114107.github.io/",
+  "required_source": {
+    "branch": "main",
+    "path": "/"
+  },
+  "download_package": "complete",
+  "local_validation": "passed within the scope documented in TESTING.md",
+  "remote_publication": "not completed",
+  "public_site_verified": false,
+  "note": "Repository transfer staging was attempted, but a verified website import and Pages deployment were not completed. Do not count the intended URL as a verified live version. Upload the extracted package to main at the repository root and verify the published pages."
+}

@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="以人文為起點，讓商管專業回應世界。認識慈濟大學經營管理學系的教育方向、學習特色、學生作品與系所資源。" name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#164b3e" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="zh_TW" property="og:locale"/>
+<meta content="慈濟大學經營管理學系網站提案" property="og:site_name"/>
+<meta content="系所簡介｜慈濟大學經營管理學系" property="og:title"/>
+<meta content="以人文為起點，認識慈濟大學經營管理學系的教育方向、學習特色、學生作品與系所資源。" property="og:description"/>
+
+<title>系所簡介｜慈濟大學經營管理學系</title>
+<link href="graph/brand-mark.svg" rel="icon" type="image/svg+xml"/>
+<!-- 本頁與另一個 HTML 頁面都放在專案根目錄；素材統一使用 graph/ 相對路徑。 -->
+<!-- INTERNAL CSS: keep the styles in both pages in sync. -->
+<style>
+
+/* TCU Business Management — shared presentation layer.
+   No external fonts, libraries, tracking pixels or image services. */
+:root {
+ --ink:#2e191c; --green:#451c22; --green-2:#6b353d; --sage:#d79da6;
+ --paper:#f7f4f3; --warm:#efe9e5; --line:#dfd7d2; --muted:#6b5c5e;
+ --white:#fff; --radius:8px;
+ --sans:"Noto Sans CJK TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+ --serif:"Noto Serif CJK TC","Noto Serif TC","Songti TC","PMingLiU",serif;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:110px}
+body {margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased}
+body.modal-open {overflow:hidden}
+a {color:inherit;text-decoration:none}
+a,button,input,summary {-webkit-tap-highlight-color:transparent}
+button,input {font:inherit}
+button {cursor:pointer}
+button:disabled {cursor:default}
+img,video {display:block;max-width:100%;height:auto}
+img {color:var(--green)}
+figure,p,h1,h2,h3 {margin:0}
+h1,h2,h3 {line-height:1.4}
+h1,h2 {font-family:var(--serif);font-weight:600;letter-spacing:-.035em}
+h1 {font-size:clamp(2.5rem,4.45vw,4rem);line-height:1.52}
+h2 {font-size:clamp(1.9rem,3.05vw,2.75rem);line-height:1.5}
+h3 {font-weight:600}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,video:focus-visible {outline:3px solid #863743;outline-offset:5px}
+a:hover {text-decoration:none}
+::selection {background:var(--sage);color:var(--green)}
+[hidden] {display:none !important}
+.container {width:min(1224px,calc(100% - 96px));margin-inline:auto}
+.section-pad {padding-block:94px}
+.eyebrow {font:600 11px/1.6 var(--sans);letter-spacing:.17em;color:var(--green-2);margin-bottom:20px}
+.green-text {color:var(--green-2)}
+.sr-only {position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link {position:fixed;z-index:1000;top:8px;left:12px;padding:10px 20px;background:var(--green);color:white;transform:translateY(-160%)}
+.skip-link:focus {transform:translateY(0)}
+.small-dot {display:inline-block;flex-shrink:0;width:6px;height:6px;border-radius:50%;background:currentColor}
+.mobile-only {display:none}
+
+/* Global navigation */
+.utility-bar {background:var(--green);color:#ebe3df;font-size:11px;letter-spacing:.035em}
+.utility-inner {min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.utility-inner>div {display:flex;gap:28px}
+.utility-inner a:hover {color:#fff;text-decoration:underline}
+.utility-separator {margin:0 12px;opacity:.5}
+.site-header {position:sticky;top:0;background:rgba(248,248,242,.98);z-index:50;border-bottom:1px solid var(--line)}
+.header-inner {min-height:93px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand {display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand img {width:48px;height:48px}
+.brand-copy {display:flex;flex-direction:column;line-height:1.35}
+.brand-university {font-size:12px;letter-spacing:.18em}
+.brand-department {font-size:23px;font-weight:700;letter-spacing:.055em;margin-top:4px}
+.primary-nav {display:flex;align-items:center;gap:20px;font-size:14px}
+.primary-nav>a {position:relative;padding-block:32px;white-space:nowrap}
+.primary-nav>a:not(.nav-contact)::after {content:"";position:absolute;left:0;right:0;bottom:19px;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.primary-nav>a[aria-current],.primary-nav>a:hover {color:var(--green);font-weight:600}
+.primary-nav>a[aria-current]::after,.primary-nav>a:hover::after {transform:scaleX(1)}
+.primary-nav .nav-contact {background:#e8dfda;padding:11px 18px;border-radius:3px;font-size:13px}
+.nav-contact span {margin-left:15px}
+.primary-nav .nav-contact:hover {background:#ddd1ca}
+.menu-toggle {display:none}
+
+/* Reusable components */
+.button {display:inline-flex;justify-content:center;align-items:center;gap:32px;min-height:53px;padding:13px 23px;font-size:14px;line-height:1.65;font-weight:600;border:1px solid transparent;border-radius:4px;transition:background .18s,transform .18s}
+.button-primary {background:var(--green);color:#fff}
+.button-primary:hover {background:#632931;transform:translateY(-2px)}
+.button-plain {padding-inline:10px;color:var(--green)}
+.button-plain:hover {background:var(--warm)}
+.button span[aria-hidden] {font-size:21px;font-weight:400;line-height:1}
+.text-link {display:inline-flex;align-items:center;gap:20px;font-size:13px;font-weight:600;line-height:1.8;padding-bottom:4px;border-bottom:1px solid currentColor;color:var(--green)}
+.text-link span[aria-hidden] {font-size:20px;transition:transform .18s}
+.text-link:hover span[aria-hidden] {transform:translate(2px,-2px)}
+.section-heading {display:flex;align-items:flex-end;justify-content:space-between;gap:70px;margin-bottom:42px}
+.section-heading-end {color:var(--muted);font-size:14px;flex-shrink:0;max-width:390px}
+.section-heading-end .text-link {margin-top:18px}
+.section-intro {max-width:495px;color:var(--muted);font-size:16px}
+.section-intro p+p {margin-top:14px}
+.section-intro .text-link {margin-top:22px}
+.fine-print {font-size:12px;line-height:1.9;color:var(--muted)}
+.pill {display:inline-block;border:1px solid var(--line);border-radius:3px;padding:7px 11px;font-size:10px;letter-spacing:.1em;font-weight:600;color:var(--green)}
+
+/* Home */
+.home-hero {display:grid;grid-template-columns:1.08fr 1fr;gap:44px;padding-top:53px;padding-bottom:67px;align-items:center}
+.hero-copy {padding-block:17px 0}
+.hero-kicker {display:inline-flex;align-items:center;gap:9px;background:#eae3df;padding:5px 12px;border-radius:4px;color:var(--green);font-size:12px;letter-spacing:.07em;margin-bottom:24px}
+.hero-english {margin-bottom:13px;font-size:10px;letter-spacing:.13em}
+.hero-description {font-size:15px;line-height:2.1;color:var(--muted);margin-top:24px}
+.hero-actions {display:flex;align-items:center;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero-footnote {display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.mini-label {font-size:9px;letter-spacing:.18em;font-weight:600;color:var(--muted)}
+.hero-footnote p {font-size:12px;margin-top:4px;color:var(--muted)}
+.scroll-down {display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;font-size:20px}
+.scroll-down:hover {background:var(--warm)}
+.hero-visual {position:relative;overflow:hidden;max-width:555px;margin-left:auto;width:100%;border-radius:130px 5px 5px 5px}
+.hero-visual>img {width:100%;aspect-ratio:.9;object-fit:cover}
+.hero-visual figcaption {position:absolute;right:23px;top:24px;color:var(--green);background:#e5dbd6;border-radius:40px;padding:8px 15px;font-size:11px;display:flex;align-items:center;gap:8px}
+.about-section {border-top:1px solid var(--line);background:var(--warm)}
+.about-heading {align-items:center;margin-bottom:48px}
+.values-grid {display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7ccc6;padding-top:34px}
+.value-item {padding:0 28px;border-right:1px solid #d7ccc6}
+.value-item:first-child {padding-left:0}
+.value-item:last-child {border-right:0;padding-right:0}
+.value-number {font-family:var(--serif);font-size:21px;color:#7d585e}
+.value-item h3 {font-family:var(--serif);font-size:24px;margin-top:15px;margin-bottom:9px}
+.value-item p {color:var(--muted);font-size:13px;line-height:1.9;max-width:210px}
+.value-item>span:last-child {display:block;font-size:9px;letter-spacing:.12em;color:var(--green-2);margin-top:24px}
+.learning-layout {display:grid;grid-template-columns:1fr 1.04fr;gap:74px;align-items:center}
+.learning-visual {background:#e1d6d0;border-radius:5px;overflow:hidden}
+.learning-visual img {width:100%;aspect-ratio:1/1.02;object-fit:cover;object-position:50% 50%}
+.learning-visual figcaption {background:#ddd0c9;color:var(--green);padding:13px 20px;font-size:10px;letter-spacing:.1em;display:flex;justify-content:space-between;gap:10px}
+.learning-visual figcaption span {font-size:10px;letter-spacing:0;color:var(--muted)}
+.learning-copy .section-lead {font-size:14px;color:var(--muted);margin-top:17px}
+.learning-details {margin-top:24px;border-top:1px solid var(--line)}
+.learning-details details {border-bottom:1px solid var(--line)}
+.learning-details summary {display:flex;align-items:center;list-style:none;gap:16px;font-size:15px;font-weight:600;cursor:pointer;padding-block:20px}
+summary::-webkit-details-marker {display:none}
+.detail-index {font-family:var(--serif);font-size:13px;font-weight:400;color:var(--muted)}
+.detail-plus {margin-left:auto;font-weight:400;font-size:21px;transition:transform .2s}
+details[open] .detail-plus {transform:rotate(45deg)}
+.detail-body {padding:0 0 20px 34px;font-size:13px;color:var(--muted)}
+.detail-body .text-link {margin-top:10px;font-size:12px}
+.learning-copy>.fine-print {margin-top:19px;font-size:11px}
+.featured-section {background:#f1ecea;border-top:1px solid #e5ddd8;border-bottom:1px solid #e5ddd8}
+.artwork-note {margin-top:24px;font-size:11px}
+.resource-grid {display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.resource-card {padding:26px 26px 29px;border-right:1px solid var(--line);transition:background .2s}
+.resource-card:last-child {border-right:0}
+.resource-card:hover {background:#ede6e2}
+.resource-top {display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.13em;color:var(--green-2)}
+.resource-top>span {font-size:20px}
+.resource-card h3 {font-family:var(--serif);font-size:24px;margin-top:24px}
+.resource-card p {font-size:12px;color:var(--muted);margin-top:6px}
+
+/* Project collection */
+.work-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:42px 32px}
+.work-card {min-width:0}
+.work-visual {display:block;position:relative;overflow:hidden;background:#e9e1dc;border-radius:6px}
+.work-cover {width:100%;aspect-ratio:1000/720;object-fit:cover;transition:transform .45s}
+.work-visual:hover .work-cover {transform:scale(1.025)}
+.work-badge {position:absolute;left:18px;top:18px;padding:5px 11px;background:rgba(248,248,241,.94);color:var(--green);border-radius:3px;box-shadow:0 2px 15px #142e1510;font-size:10px;letter-spacing:.025em}
+.work-visual-arrow {position:absolute;right:18px;bottom:18px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--paper);color:var(--green);font-size:23px;transition:transform .2s}
+.work-visual:hover .work-visual-arrow {transform:rotate(45deg)}
+.work-copy {padding:22px 1px 0}
+.work-meta {display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.06em;color:var(--green-2)}
+.work-year {font-variant-numeric:tabular-nums;color:var(--muted)}
+.work-card h3 {font-family:var(--serif);font-size:25px;margin-top:8px;line-height:1.5}
+.work-title:hover {color:var(--green-2)}
+.work-description {font-size:13px;color:var(--muted);line-height:1.95;margin-top:12px;max-width:550px}
+.work-bottom {display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:17px;margin-top:22px;border-top:1px solid var(--line)}
+.work-tag {font-size:10px;color:var(--muted)}
+.work-bottom .text-link {border-bottom:0;padding:0;font-size:12px;flex-shrink:0}
+.works-hero {padding-block:54px 72px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.breadcrumb {display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted);margin-bottom:38px}
+.breadcrumb a:hover {text-decoration:underline}
+.works-hero .eyebrow {font-size:10px;margin-bottom:15px}
+.works-hero h1 {font-size:clamp(2.5rem,4.45vw,4rem)}
+.works-hero .text-link {margin-top:28px}
+.spotlight-card {border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#f2edea;margin-top:8px}
+.spotlight-card>img {width:100%;aspect-ratio:1000/720;object-fit:cover;transition:transform .4s}
+.spotlight-card:hover>img {transform:scale(1.018)}
+.spotlight-caption {display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 27px;position:relative;background:#f2edea}
+.spotlight-caption>div>span {font-size:9px;color:var(--green-2);letter-spacing:.1em}
+.spotlight-caption h2 {font-size:28px;margin-top:4px}
+.spotlight-caption p {font-size:12px;color:var(--muted);margin-top:5px}
+.circle-arrow {flex-shrink:0;width:43px;height:43px;border:1px solid #cbbfb8;border-radius:50%;display:grid;place-items:center;font-size:24px;color:var(--green)}
+.projects-section {background:var(--warm);border-block:1px solid var(--line)}
+.section-heading.compact {margin-bottom:30px}
+.work-tools {display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:23px;border-bottom:1px solid #d7ccc6}
+.filter-group {display:flex;gap:8px;flex-wrap:wrap}
+.filter-button {display:block;border:1px solid #d3c7c1;border-radius:30px;background:transparent;color:var(--muted);padding:9px 17px;min-height:42px;font-size:12px}
+.filter-button.is-active {background:var(--green);color:#fff;border-color:var(--green)}
+.filter-button:hover:not(.is-active) {background:#e5dcd7}
+.work-search {position:relative;width:265px;flex-shrink:0}
+.work-search input {width:100%;height:44px;padding:8px 37px 8px 40px;background:#f9f7f5;border:1px solid #d2c7c1;border-radius:4px;font-size:12px;color:var(--ink)}
+.work-search input::-webkit-search-cancel-button {display:none}
+.work-search input::placeholder {color:#6b5c5e;opacity:1}
+.search-symbol {width:13px;height:13px;border:1.5px solid var(--muted);border-radius:50%;position:absolute;top:14px;left:15px;pointer-events:none}
+.search-symbol::after {content:"";position:absolute;right:-5px;bottom:-3px;width:6px;height:1.5px;background:var(--muted);transform:rotate(45deg)}
+.search-clear {position:absolute;right:4px;top:3px;width:35px;height:38px;border:0;background:transparent;color:var(--muted);font-size:22px}
+.collection-meta {display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted);margin-block:22px 27px;min-height:22px}
+.collection-meta>p:last-child {font-size:10px}
+.collection-meta span {padding-inline:7px;color:#9a8689}
+.no-results {padding:65px 25px;text-align:center;border:1px dashed #bb9fa3;border-radius:6px}
+.no-results h3 {font-family:var(--serif);font-size:25px;margin-top:15px}
+.no-results p {font-size:14px;color:var(--muted);margin-block:15px 23px}
+.empty-mark {display:grid;place-items:center;width:60px;height:60px;background:#e2d8d2;color:var(--green);border-radius:50%;font-size:32px;margin:auto}
+.noscript-notice {padding:24px;border:1px solid var(--line)}
+.noscript-notice a {text-decoration:underline}
+.media-layout {display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:48px;align-items:center}
+.video-wrap {background:#36161b;border-radius:6px;overflow:hidden}
+.video-wrap video {width:100%;aspect-ratio:16/9;object-fit:contain;background:#36161b}
+.video-error {padding:20px;color:#fff;font-size:13px}
+.media-copy h3 {font-family:var(--serif);font-size:28px;margin-block:17px 12px}
+.media-copy>p {font-size:13px;line-height:2;color:var(--muted)}
+.media-copy .media-spec {font-size:10px;margin-top:18px;letter-spacing:.05em}
+.media-spec span {margin-inline:10px}
+.media-rule {height:1px;background:var(--line);margin-block:20px}
+.media-copy .fine-print {font-size:11px}
+.video-transcript {margin-top:23px;font-size:12px;border-bottom:1px solid var(--line)}
+.video-transcript summary {list-style:none;display:flex;justify-content:space-between;gap:20px;cursor:pointer;color:var(--green);padding-block:13px}
+.video-transcript>div {padding-bottom:20px;color:var(--muted)}
+.video-transcript p+p {margin-top:5px}
+.works-closing {padding:64px 0 75px;text-align:center;background:#f0eae7}
+.works-closing h2 {font-size:32px}
+.works-closing p:not(.eyebrow) {margin-top:14px;font-size:14px;color:var(--muted)}
+.works-closing .button {margin-top:24px}
+
+/* Footer */
+.site-footer {background:#3b181d;color:#eae2de;padding:65px 0 21px}
+.footer-top {display:grid;grid-template-columns:1fr 1.1fr;gap:70px;padding-bottom:51px}
+.site-footer .eyebrow {color:#d59fa7;font-size:10px}
+.footer-intro h2 {font-size:36px}
+.footer-intro>p:last-child {font-size:12px;color:#cec3bd;margin-top:15px}
+.contact-block {font-style:normal;align-self:center}
+.footer-label {font-size:11px;color:#cec3bd;letter-spacing:.06em}
+.contact-email {font-size:clamp(1.15rem,2.1vw,1.8rem);display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:17px;margin-bottom:20px;border-bottom:1px solid #694c50;letter-spacing:.01em;overflow-wrap:anywhere}
+.contact-email:hover {color:#d2c1b8}
+.contact-block>p {font-size:13px;margin-top:8px;display:flex;gap:30px;flex-wrap:wrap}
+.contact-block>p>span {color:#cbbfb9}
+.footer-source {display:inline-flex;font-size:11px;color:#d1c2b9;gap:12px;margin-top:19px}
+.footer-source:hover {text-decoration:underline}
+.footer-bottom {display:flex;align-items:center;justify-content:space-between;gap:25px;border-top:1px solid #5a3b40;padding-block:25px}
+.footer-wordmark {font-size:21px;font-weight:600;letter-spacing:.045em}
+.footer-wordmark span {font-size:9px;font-weight:400;letter-spacing:.13em;margin-left:18px;vertical-align:middle}
+.footer-bottom>p {font-size:11px;color:#cfc4be}
+.back-to-top {font-size:11px;color:#e1d7d1}
+.back-to-top span {margin-left:17px;font-size:17px}
+.publication-note {border-top:1px solid #5a3b40}
+.publication-note summary {list-style:none;padding-top:16px;display:flex;justify-content:space-between;cursor:pointer;font-size:10px;color:#cabfb9}
+.publication-content {font-size:11px;color:#cdc2bc;padding-top:15px;line-height:1.9}
+.publication-content p+p {margin-top:9px}
+.publication-content a {text-decoration:underline;text-underline-offset:3px}
+
+/* Accessible dialog: enhanced over real source hyperlinks */
+.project-dialog {width:min(940px,calc(100% - 40px));max-height:88dvh;max-height:88vh;padding:0;border:0;border-radius:8px;color:var(--ink);background:var(--paper);box-shadow:0 35px 100px #071e2340;overflow:auto}
+.project-dialog::backdrop {background:rgba(8,31,23,.72);backdrop-filter:blur(5px)}
+.dialog-shell {position:relative}
+.dialog-close {position:absolute;top:15px;right:15px;z-index:2;display:grid;place-items:center;border:1px solid #d4c7c0;border-radius:50%;background:var(--paper);color:var(--green);width:44px;height:44px;font-size:27px;line-height:1}
+.dialog-cover {width:100%;height:280px;object-fit:cover;object-position:50% 35%}
+.dialog-content {padding:30px 42px 40px}
+.dialog-content h2 {font-size:29px;line-height:1.6;letter-spacing:0}
+.dialog-content .eyebrow {margin-bottom:10px}
+#dialog-summary {margin-top:17px;font-size:14px;line-height:2;color:var(--muted)}
+.achievement {background:#ece4e0;border-left:3px solid #946068;margin-top:22px;padding:18px 20px}
+.achievement .eyebrow {font-size:10px;margin:0}
+.achievement p {font-size:14px;font-weight:500;margin-top:8px}
+#dialog-note {margin-top:18px;font-size:11px}
+#dialog-source {margin-top:25px;font-size:13px}
+
+/* Medium and small screens */
+@media (min-width:1450px) {
+ .home-hero {gap:58px}
+ h1,.works-hero h1 {font-size:65px}
+}
+@media (max-width:1100px) {
+ .container {width:calc(100% - 64px)}
+ .primary-nav {gap:20px;font-size:12px}
+ .brand-department {font-size:21px}
+ .home-hero {gap:32px}
+ h1,.works-hero h1 {font-size:49px}
+ .hero-description {font-size:14px}
+ .hero-visual {border-top-left-radius:100px}
+ .hero-visual figcaption {right:13px;top:14px;font-size:10px}
+ .hero-actions {gap:5px}
+ .hero-actions .button {font-size:12px;gap:15px;padding:12px 16px}
+ .hero-footnote {margin-top:30px}
+ .learning-layout {gap:40px}
+ .works-hero {gap:42px}
+ .resource-card {padding:22px 18px}
+ .section-heading {gap:45px}
+ .media-layout {gap:30px}
+ .value-item {padding-inline:22px}
+}
+@media (max-width:880px) {
+ .container {width:calc(100% - 48px)}
+ .header-inner {min-height:80px;flex-wrap:wrap;gap:0}
+ .brand img {width:42px;height:42px}
+ .brand-department {font-size:20px}
+ .brand-university {font-size:10px}
+ .menu-toggle {display:none;gap:9px;align-items:center;min-height:44px;background:none;border:1px solid var(--line);border-radius:3px;padding:8px 10px;color:var(--green);font-size:12px}
+ .js .menu-toggle {display:flex}
+ .menu-bars {position:relative;width:17px;height:12px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+ .menu-bars::after {position:absolute;content:"";height:1.5px;background:currentColor;top:4px;left:0;right:0}
+ .primary-nav {width:100%;flex-wrap:wrap;gap:6px 20px;padding:12px 0 18px;border-top:1px solid var(--line)}
+ .primary-nav>a {padding-block:8px;font-size:14px}
+ .primary-nav>a:not(.nav-contact)::after {bottom:1px}
+ .primary-nav .nav-contact {padding:8px 16px}
+ .js .primary-nav {display:none}
+ .js .primary-nav.is-open {display:flex}
+ html {scroll-padding-top:92px}
+ .home-hero {padding-top:35px;padding-bottom:45px;gap:28px}
+ h1,.works-hero h1 {font-size:40px}
+ .hero-kicker {font-size:10px;margin-bottom:19px}
+ .hero-english {font-size:8px}
+ .hero-description {font-size:12px;margin-top:18px}
+ .hero-actions {margin-top:22px}
+ .hero-footnote {margin-top:23px;padding-top:16px}
+ .hero-footnote p {font-size:10px}
+ .hero-visual {border-top-left-radius:80px}
+ .hero-visual figcaption {font-size:8px;padding:6px 9px;right:10px;top:14px}
+ .hero-visual>img {aspect-ratio:.76}
+ .section-pad {padding-block:65px}
+ .section-heading {gap:30px}
+ .section-intro {max-width:390px;font-size:14px}
+ .value-item {padding-inline:16px}
+ .value-item h3 {font-size:21px}
+ .value-item p {font-size:12px}
+ .value-item>span:last-child {font-size:8px;letter-spacing:.05em}
+ .learning-layout {gap:30px}
+ .learning-copy .section-lead {font-size:12px}
+ .learning-details summary {font-size:13px;gap:10px}
+ .detail-body {padding-left:25px;font-size:12px}
+ .learning-visual img {aspect-ratio:.75}
+ .learning-visual figcaption {display:block;font-size:9px;padding:10px 14px}
+ .learning-visual figcaption span {display:block;font-size:9px}
+ .resource-grid {grid-template-columns:repeat(2,1fr)}
+ .resource-card:nth-child(2) {border-right:0}
+ .resource-card:nth-child(-n+2) {border-bottom:1px solid var(--line)}
+ .resource-card {padding:22px}
+ .resource-card h3 {margin-top:15px}
+ .works-hero {padding-block:36px 49px;gap:35px}
+ .works-hero .breadcrumb {margin-bottom:26px}
+ .works-hero .eyebrow {font-size:9px}
+ .spotlight-caption {padding:18px}
+ .spotlight-caption>div>span {font-size:8px}
+ .spotlight-caption h2 {font-size:24px}
+ .spotlight-caption p {font-size:10px}
+ .work-tools {flex-direction:column;align-items:stretch}
+ .work-search {width:100%;max-width:none}
+ .work-grid {gap:32px 22px}
+ .work-card h3 {font-size:22px}
+ .work-description {font-size:12px}
+ .work-badge {font-size:9px;top:12px;left:12px}
+ .work-bottom {flex-wrap:wrap;gap:8px}
+ .media-layout {grid-template-columns:1fr;gap:24px}
+ .media-copy {max-width:650px}
+ .media-copy .media-rule {margin-block:15px}
+ .media-copy h3 {font-size:25px}
+ .footer-top {gap:35px}
+ .footer-intro h2 {font-size:30px}
+ .footer-wordmark span {display:block;margin:0}
+}
+@media (max-width:600px) {
+ .container {width:calc(100% - 40px)}
+ .utility-inner {min-height:29px;font-size:9px;gap:10px}
+ .utility-inner>div {gap:14px}
+ .utility-inner>div>a:first-child {display:none}
+ .utility-separator {margin:0 5px}
+ .header-inner {min-height:75px}
+ .brand {gap:9px}
+ .brand img {width:39px;height:39px}
+ .brand-department {font-size:19px;letter-spacing:.045em}
+ .brand-university {font-size:10px}
+ .menu-toggle {min-height:44px}
+ .primary-nav {flex-direction:column;align-items:stretch;gap:3px}
+ .primary-nav>a {padding:11px 8px;font-size:14px}
+ .primary-nav>a:not(.nav-contact)::after {display:none}
+ .primary-nav>a[aria-current] {background:#eae3df;border-radius:3px}
+ .primary-nav .nav-contact {margin-top:6px}
+ .home-hero {grid-template-columns:1fr;gap:31px;padding-block:27px 43px}
+ .hero-copy {padding-top:0}
+ .hero-kicker {font-size:11px;padding:5px 10px;margin-bottom:20px}
+ .hero-english {font-size:8px;letter-spacing:.14em;margin-bottom:8px}
+ h1,.works-hero h1 {font-size:clamp(33px,8.65vw,49px);line-height:1.55}
+ .hero-description {font-size:14px;line-height:2;margin-top:17px}
+ .mobile-only {display:block}
+ .hero-actions {margin-top:24px;gap:15px}
+ .hero-actions .button {font-size:12px;padding:12px 17px;min-height:49px;gap:17px}
+ .hero-actions .button-plain {padding-inline:1px}
+ .hero-footnote {margin-top:26px;padding-top:17px}
+ .hero-footnote p {font-size:11px}
+ .mini-label {font-size:8px}
+ .scroll-down {width:36px;height:36px}
+ .hero-visual {width:100%;max-width:none;border-radius:75px 4px 4px 4px}
+ .hero-visual>img {aspect-ratio:1.06;object-position:50% 61%}
+ .hero-visual figcaption {font-size:9px;top:15px;right:14px;padding:7px 11px}
+ .section-pad {padding-block:49px}
+ .eyebrow {font-size:9px;margin-bottom:13px}
+ h2 {font-size:29px;line-height:1.55}
+ .section-heading {display:block;margin-bottom:29px}
+ .section-heading-end {margin-top:19px;font-size:12px;max-width:100%}
+ .section-heading-end .text-link {margin-top:14px}
+ .section-intro {max-width:none;font-size:14px;margin-top:22px}
+ .section-intro p+p {margin-top:11px}
+ .section-intro .text-link {margin-top:17px}
+ .values-grid {grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0}
+ .value-item {padding:23px 15px 24px !important;border-bottom:1px solid #d7ccc6}
+ .value-item:nth-child(2n) {border-right:0;padding-right:0 !important}
+ .value-item:nth-child(2n+1) {padding-left:0 !important}
+ .value-item:nth-child(n+3) {border-bottom:0}
+ .value-item h3 {font-size:22px;margin-top:10px;margin-bottom:8px}
+ .value-item p {font-size:12px;max-width:165px}
+ .value-item>span:last-child {font-size:8px;margin-top:18px}
+ .value-number {font-size:19px}
+ .learning-layout {grid-template-columns:1fr;gap:30px}
+ .learning-visual img {aspect-ratio:1.18;object-position:50% 45%}
+ .learning-visual figcaption {display:flex;align-items:center;justify-content:space-between}
+ .learning-copy .section-lead {font-size:13px}
+ .learning-details summary {font-size:14px;padding-block:19px}
+ .learning-details {margin-top:20px}
+ .detail-body {font-size:12px}
+ .learning-copy>.fine-print {font-size:10px}
+ .work-grid {grid-template-columns:1fr;gap:34px}
+ .work-cover {aspect-ratio:1000/720}
+ .work-copy {padding-top:17px}
+ .work-card h3 {font-size:23px}
+ .work-description {font-size:14px;margin-top:10px}
+ .work-bottom {margin-top:17px;padding-top:13px}
+ .work-tag {font-size:9px}
+ .work-badge {top:13px;left:13px;font-size:9px;padding:5px 9px}
+ .work-visual-arrow {width:36px;height:36px;bottom:13px;right:13px;font-size:21px}
+ .artwork-note {font-size:10px;margin-top:22px}
+ .resource-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+ .resource-card {padding:19px 15px}
+ .resource-top {font-size:8px;letter-spacing:.07em}
+ .resource-card h3 {font-size:22px;margin-top:16px}
+ .resource-card p {font-size:10px}
+ .works-hero {grid-template-columns:1fr;gap:32px;padding-block:20px 40px}
+ .breadcrumb {font-size:10px;margin-bottom:27px !important}
+ .works-hero .eyebrow {font-size:8px;letter-spacing:.15em}
+ .works-hero .hero-description {font-size:14px}
+ .works-hero .text-link {margin-top:23px}
+ .spotlight-card {margin-top:0}
+ .spotlight-card>img {aspect-ratio:1000/720}
+ .spotlight-caption {padding:17px 19px}
+ .spotlight-caption h2 {font-size:25px}
+ .spotlight-caption p {font-size:11px}
+ .filter-group {gap:7px}
+ .filter-button {font-size:11px;min-height:44px;padding:8px 14px}
+ .work-tools {gap:17px;padding-bottom:19px}
+ .work-search input {height:48px;font-size:16px}
+ .search-symbol {top:15px}
+ .search-clear {height:44px;top:2px}
+ .collection-meta {margin-block:18px 22px}
+ .collection-meta>p:last-child {display:none}
+ .collection-meta>p {font-size:11px}
+ .media-layout {gap:23px}
+ .media-copy h3 {font-size:25px}
+ .media-copy>p {font-size:14px}
+ .media-copy .media-spec {font-size:9px}
+ .media-copy .fine-print {font-size:10px}
+ .video-transcript {font-size:11px;margin-top:18px}
+ .works-closing {padding:44px 0 50px}
+ .works-closing h2 {font-size:25px}
+ .works-closing p:not(.eyebrow) {font-size:12px}
+ .works-closing .button {font-size:12px}
+ .site-footer {padding:46px 0 20px}
+ .footer-top {grid-template-columns:1fr;gap:32px;padding-bottom:31px}
+ .footer-intro h2 {font-size:29px}
+ .footer-intro>p:last-child {font-size:11px}
+ .contact-email {font-size:22px;line-height:1.6;margin-top:10px;padding-bottom:13px;margin-bottom:16px;gap:8px}
+ .contact-block>p {font-size:12px;gap:23px}
+ .footer-label {font-size:10px}
+ .footer-source {font-size:10px;margin-top:16px}
+ .footer-bottom {gap:20px;padding-block:22px}
+ .footer-wordmark {font-size:20px}
+ .footer-wordmark span {font-size:8px;letter-spacing:.1em}
+ .footer-bottom>p {display:none}
+ .back-to-top {font-size:10px}
+ .publication-note summary {font-size:10px}
+ .publication-content {font-size:10px}
+ .project-dialog {width:calc(100% - 24px);max-height:91vh;border-radius:6px}
+ .dialog-cover {height:185px}
+ .dialog-content {padding:24px 22px 28px}
+ .dialog-content h2 {font-size:24px}
+ #dialog-summary {font-size:13px}
+ .achievement {padding:15px 17px}
+ .achievement p {font-size:12px}
+ #dialog-note {font-size:10px}
+ #dialog-source {font-size:12px}
+ .dialog-close {width:44px;height:44px;top:10px;right:10px}
+}
+@media (max-width:360px) {
+ .container {width:calc(100% - 32px)}
+ .brand-department {font-size:17px}
+ .brand img {width:36px;height:36px}
+ .menu-label {display:none}
+ .menu-toggle {padding:9px}
+ .hero-actions {gap:8px}
+ .hero-actions .button {padding-inline:11px;gap:10px}
+ .filter-button {padding-inline:11px;font-size:10px}
+ .hero-visual figcaption {font-size:8px}
+ .contact-email {font-size:20px}
+}
+@media (prefers-reduced-motion:reduce) {
+ html {scroll-behavior:auto}
+ *,*::before,*::after {animation:none !important;transition:none !important}
+}
+@media print {
+ .utility-bar,.primary-nav,.menu-toggle,.skip-link,.work-tools,.hero-actions,.scroll-down,.back-to-top,.project-dialog,.video-wrap {display:none !important}
+ .site-header {position:static}
+ .container {width:100%}
+ body {background:white;color:black;font-size:11pt}
+ .section-pad {padding-block:22px}
+ .home-hero,.works-hero {padding-block:20px;gap:25px}
+ h1,.works-hero h1 {font-size:32pt}
+ h2 {font-size:23pt}
+ .site-footer {background:white;color:black}
+ .site-footer * {color:black !important}
+ .work-card,.values-grid,.resource-grid {break-inside:avoid}
+ a {text-decoration:underline}
+ .publication-content {display:block}
+}
+
+/* Photo slots and AI collaboration disclosure */
+.photo-section {background:var(--warm,#f4f0ee)}
+.photo-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.photo-card {margin:0;background:#fff;border:1px solid #dfd7d3;border-radius:6px;overflow:hidden}
+.photo-card img {display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.photo-card:nth-child(2) img {object-fit:contain;background:#39171c}
+.photo-card figcaption {padding:22px}
+.photo-card h3 {font-family:var(--serif);font-size:23px;line-height:1.5;margin:9px 0}
+.photo-card p {font-size:14px;line-height:1.85;color:var(--muted,#66585a)}
+.photo-status {display:inline-block;font-size:11px;letter-spacing:.05em;color:#57383d;border:1px solid #d6ccc7;border-radius:20px;padding:3px 10px}
+.photo-note {max-width:70ch;margin-top:24px;font-size:13px;line-height:1.85;color:var(--muted,#66585a)}
+.ai-disclosure {margin-top:16px;border-top:1px solid #5a3b40}
+.ai-disclosure summary {min-height:44px;align-items:center;padding:14px 0;font-size:13px}
+.ai-disclosure .publication-content {font-size:13px;max-width:85ch;padding:0 0 8px}
+@media(max-width:880px){.photo-grid{grid-template-columns:1fr 1fr}.photo-grid .photo-card:last-child{grid-column:1/-1;max-width:calc(50% - 13px)}}
+@media(max-width:600px){.photo-grid{grid-template-columns:1fr;gap:20px}.photo-grid .photo-card:last-child{grid-column:auto;max-width:none}.photo-card figcaption{padding:20px}.photo-card h3{font-size:22px}}
+@media print{.photo-card{break-inside:avoid}.ai-disclosure .publication-content{display:block}}
+
+  
+/* Independent academic redesign. All style remains in this HTML. */
+:root{--ink:#202020;--green:#8b1e2d;--green-2:#8b1e2d;--sage:#e9d6cb;--paper:#fff;--warm:#f4f2ed;--line:#d7d3cb;--muted:#5b5955;--radius:0;--serif:Georgia,"Noto Serif CJK TC","Noto Serif TC","Songti TC","PMingLiU",serif}
+html{scroll-padding-top:168px}body{background:#fff}.utility-bar{background:#202020;color:#efede7}.site-header{background:#fff}
+.header-inner{display:grid;grid-template-columns:1fr auto;gap:0;min-height:0;padding-top:20px}.brand{padding-bottom:19px}.brand img{border-radius:0;width:48px;height:48px}.brand-university{letter-spacing:.12em}.brand-department{font-family:var(--serif);font-size:26px}
+.primary-nav{grid-column:1/-1;justify-content:space-between;border-top:1px solid var(--line);gap:24px}.primary-nav>a{padding:14px 0;min-height:50px;font-size:14px}.primary-nav>a:not(.nav-contact)::after{bottom:-1px;height:3px}.primary-nav .nav-contact{border:0;border-radius:0;padding:10px 0;background:transparent;color:var(--green)}.primary-nav .nav-contact:hover{background:transparent}
+h1{font-size:clamp(40px,4.8vw,66px);letter-spacing:-.035em;line-height:1.4}h2{letter-spacing:-.025em}.section-pad{padding-block:82px}.home-hero{gap:70px;padding-top:56px;padding-bottom:66px}.hero-kicker{background:transparent;border-left:3px solid var(--green);padding:0 0 0 12px;border-radius:0}.hero-visual{border-radius:0}.hero-visual>img{object-fit:contain}.hero-visual figcaption{position:static;border-radius:0;color:var(--muted);background:#fff;padding:12px 0;font-size:10px}.hero-actions{gap:14px}.hero-english{letter-spacing:.1em}.hero-footnote{margin-top:34px}.hero-description{font-size:16px}
+.button,.pill,.work-visual,.spotlight-card,.resource-grid,.filter-button,.project-dialog,.photo-card,.copy-prompt,.prompt-card{border-radius:0!important;box-shadow:none!important}.button-primary:hover{background:#651421;transform:none}.hero-actions .button-plain{border-bottom:1px solid var(--green)}.scroll-down{border-color:var(--line)}.about-section{background:var(--warm)}.values-grid,.value-item{border-color:var(--line)}.value-number{color:var(--green)}.value-item h3{font-size:23px}
+.learning-visual,.learning-visual figcaption{border-radius:0;background:var(--warm)}.featured-section,.projects-section{background:#f5f3ef;border-color:var(--line)}.resource-grid{border:0;grid-template-columns:1fr 1fr;gap:0 46px}.resource-card{border-right:0;border-top:1px solid var(--line);padding:24px 0}.resource-card:hover{background:#f4f2ed}.resource-card h3{margin-top:10px}.work-cover{aspect-ratio:1.65}.work-badge{border-radius:0;box-shadow:none;background:#ffffffef}.work-visual-arrow{border:1px solid var(--line)}.spotlight-card,.spotlight-caption{background:var(--warm)}.spotlight-card>img{aspect-ratio:1.65}.work-search input{background:white;border-color:var(--line);border-radius:0}.filter-button{border-color:var(--line);min-height:44px}.filter-button:hover:not(.is-active){background:#e8e3dc}.no-results{border-color:var(--line)}.empty-mark{background:#eee3df}.work-tools{border-color:var(--line)}.works-closing{background:var(--warm)}.circle-arrow{border-color:var(--line)}
+.site-footer{background:#202020;color:#eeeae3}.site-footer .eyebrow,.footer-intro>p:last-child,.footer-label,.contact-block>p>span,.footer-source,.footer-bottom>p,.back-to-top,.publication-note summary,.publication-content{color:#d5d0c8}.footer-bottom,.publication-note,.contact-email{border-color:#56524c}.contact-email:hover{color:#fff}.achievement{background:var(--warm);border-left-color:var(--green)}.project-dialog::backdrop{background:#171717bb;backdrop-filter:none}.dialog-close{border-color:var(--line)}.video-wrap,.video-wrap video{background:#201a1b;border-radius:0}.fine-print{font-size:12px}.photo-frame,.photo-tag{border-radius:0!important}
+.process-hero{border-bottom:1px solid var(--line)}.integration-strip{background:var(--warm)}.prompt-box{border-radius:0;background:var(--warm)}.prompt-card pre{overflow-wrap:anywhere;white-space:pre-wrap}.prompt-card,.prompt-content{min-width:0}.record-closing{background:var(--warm)}.publication-note>p{font-size:11px;line-height:1.9;color:#d5d0c8;margin-bottom:12px}
+.process-table-wrap{overflow:auto;max-width:100%;margin-top:25px}.process-table{border-collapse:collapse;width:100%;font-size:13px}.process-table th,.process-table td{text-align:left;padding:15px 12px;border-bottom:1px solid var(--line);vertical-align:top}.process-table th{background:var(--warm)}.process-tools{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}.process-tools button{min-height:44px;background:var(--green);color:white;border:1px solid var(--green);padding:10px 16px;font:inherit;font-size:13px}.source-links{padding-left:22px;line-height:2.2;font-size:14px}.source-links a{text-decoration:underline}.design-note{border-left:3px solid var(--green);background:var(--warm);padding:22px;margin-top:24px;font-size:14px}
+@media(min-width:881px){.menu-toggle{display:none!important}.header-inner:after{content:"TZU CHI UNIVERSITY";font:13px Georgia,serif;letter-spacing:.09em;color:var(--muted);grid-column:2;grid-row:1;align-self:center;padding-bottom:19px}}
+@media(max-width:1100px){.home-hero{gap:35px}.primary-nav{gap:15px}.primary-nav>a{font-size:13px}}
+@media(max-width:880px){html{scroll-padding-top:112px}.header-inner{display:flex;padding-top:0;min-height:83px}.brand{padding:0}.brand-department{font-size:21px}.menu-toggle{border-radius:0}.primary-nav{border-top:0}.primary-nav>a{font-size:15px;padding:12px 0}.hero-visual{border-radius:0}.home-hero{gap:30px}.resource-grid{grid-template-columns:1fr 1fr;gap:0 24px}.resource-card{border:0;border-top:1px solid var(--line)}.section-pad{padding-block:56px}.hero-description{font-size:15px}}
+@media(max-width:560px){.container{width:calc(100% - 36px)}.brand-department{font-size:20px}.home-hero{padding-top:34px}h1,.works-hero h1{font-size:42px}.hero-visual>img{max-height:none}.hero-kicker{font-size:11px}.resource-grid{grid-template-columns:1fr}.resource-card{padding:21px 0}.resource-card h3{font-size:24px}.hero-description{font-size:14px}.process-table{font-size:12px}.process-table th,.process-table td{padding:10px 7px}.section-heading-end{max-width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+@media print{.site-header,.utility-bar,.site-footer,.process-tools,.copy-prompt{display:none!important}.container{width:100%}.prompt-card{break-inside:avoid}details::details-content{display:block}.section-pad{padding-block:25px}body{background:white;color:black}}
+</style>
+</head>
+<body data-site-version="tcu-academic-final-20261015" id="top">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<div class="utility-bar"><div class="container utility-inner">
+<span>慈濟大學 <span class="utility-separator">/</span> 智慧永續管理學院</span>
+<div><a class="" href="https://www.tcu.edu.tw/" rel="noopener noreferrer" target="_blank">慈大首頁 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a><a class="" href="https://mdm.tcu.edu.tw/index.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">官方公告 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a></div>
+</div></div>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="慈濟大學經營管理學系，回首頁" class="brand" href="index.html">
+<img alt="" height="48" src="graph/brand-mark.svg" width="48"/>
+<span class="brand-copy"><span class="brand-university">慈濟大學</span><span class="brand-department">經營管理學系</span></span>
+</a>
+<button aria-controls="primary-nav" aria-expanded="false" class="menu-toggle" type="button"><span aria-hidden="true" class="menu-bars"></span><span class="menu-label">選單</span></button>
+<nav aria-label="主要導覽" class="primary-nav" id="primary-nav">
+<a aria-current="page" href="index.html">系所簡介</a>
+<a href="studentworks.html">學生作品</a>
+<a href="index.html#learning">學習特色</a>
+<a href="index.html#resources">系所資源</a>
+<a href="ai-collaboration.html">製作紀錄</a>
+<a class="nav-contact" href="#contact">聯絡我們 <span aria-hidden="true">↗</span></a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section aria-labelledby="home-title" class="home-hero container">
+<div class="hero-copy">
+<p class="hero-kicker"><span aria-hidden="true" class="small-dot"></span> 以人為本的經營管理</p>
+<p class="eyebrow hero-english" lang="en">DEPARTMENT OF BUSINESS MANAGEMENT</p>
+<h1 id="home-title">理解商業，<br/><span class="green-text">創造改變。</span></h1>
+<p class="hero-description">以人文為起點，讓商管專業回應世界。從市場洞察、數位應用到永續經營，將課堂裡的想法，轉化為理解問題與付諸實踐的能力。</p>
+<div class="hero-actions"><a class="button button-primary" href="#about">認識經管系 <span aria-hidden="true">↗</span></a><a class="button button-plain" href="studentworks.html">探索學生作品 <span aria-hidden="true">→</span></a></div>
+<div class="hero-footnote"><div><span class="mini-label">OUR PERSPECTIVE</span><p>把人，放在每一次決策的中心。</p></div><a aria-label="向下閱讀系所簡介" class="scroll-down" href="#about">↓</a></div>
+</div>
+<figure class="hero-visual">
+<img alt="原創地球與山海意象，象徵人文、經營與永續的連結。" fetchpriority="high" height="1000" src="graph/hero-world.svg" width="900"/>
+<figcaption><span aria-hidden="true" class="small-dot"></span> 人文 × 專業 × 行動</figcaption>
+</figure>
+</section>
+<section aria-labelledby="about-title" class="about-section section-pad" id="about">
+<div class="container">
+<div class="section-heading about-heading">
+<div><p class="eyebrow">01 / ABOUT THE DEPARTMENT</p><h2 id="about-title">專業有深度，<br/>經營有溫度。</h2></div>
+<div class="section-intro"><p>經營管理，不只是理解企業如何運作，也是在每一次選擇中，看見人與社會的需要。</p><p>本系重視人文與職場倫理、創意思考、團隊合作及跨文化視野，連結商管學習與實務應用。</p><a class="text-link" href="https://mdm.tcu.edu.tw/p/412-1021-2.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">認識本系教育方向 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a></div>
+</div>
+<div class="values-grid">
+<article class="value-item"><span class="value-number">01</span><h3>人文素養</h3><p>從尊重與倫理出發，思考專業的責任。</p><span lang="en">HUMANITY</span></article>
+<article class="value-item"><span class="value-number">02</span><h3>創意思考</h3><p>提出不同的問題，探索更好的可能。</p><span lang="en">CREATIVITY</span></article>
+<article class="value-item"><span class="value-number">03</span><h3>團隊合作</h3><p>在溝通與協作之間，完成共同目標。</p><span lang="en">COLLABORATION</span></article>
+<article class="value-item"><span class="value-number">04</span><h3>跨文化視野</h3><p>理解差異，培養與世界對話的能力。</p><span lang="en">GLOBAL PERSPECTIVE</span></article>
+</div>
+</div>
+</section>
+<section aria-labelledby="learning-title" class="learning-section section-pad" id="learning">
+<div class="container learning-layout">
+<figure class="learning-visual"><img alt="原創學習空間示意：窗邊的討論桌、書本與植栽；不是本系教室實拍。" height="850" loading="lazy" src="graph/learning-space.svg" width="1000"/><figcaption>LEARN WITH PURPOSE.<span>學習空間原創示意</span></figcaption></figure>
+<div class="learning-copy"><p class="eyebrow">02 / LEARNING EXPERIENCE</p><h2 id="learning-title">把教室，延伸到<br/>真實世界。</h2><p class="section-lead">從理解概念、練習方法，到走進場域，讓知識成為能夠運用的能力。</p>
+<div class="learning-details">
+<details open=""><summary><span class="detail-index">01</span><span>商管知識，連結多元應用</span><span aria-hidden="true" class="detail-plus">＋</span></summary><div class="detail-body"><p>從市場與行銷、流通服務、電子商務到永續經營，探索商業問題的不同面向。</p><a class="text-link" href="https://mdm.tcu.edu.tw/p/412-1021-16.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">查看各入學年度課規 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a></div></details>
+<details><summary><span class="detail-index">02</span><span>在實務場域練習與反思</span><span aria-hidden="true" class="detail-plus">＋</span></summary><div class="detail-body"><p>系上設有個案研討、簡報溝通、智慧商店與知足咖啡館等學習場域。</p><a class="text-link" href="https://mdm.tcu.edu.tw/p/412-1021-2.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">認識教學空間 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a></div></details>
+<details><summary><span class="detail-index">03</span><span>讓專題與實習走向產業</span><span aria-hidden="true" class="detail-plus">＋</span></summary><div class="detail-body"><p>透過專題、實習與跨域學習，累積發現問題、整合資訊及提出方案的經驗。</p><a class="text-link" href="https://mdm.tcu.edu.tw/p/412-1021-5007.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">前往學生實習專區 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a></div></details>
+</div>
+<p class="fine-print">學習方向依官方公開介紹整理；實際課程、設備使用與實習安排，以各年度公告為準。</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="featured-title" class="featured-section section-pad">
+<div class="container">
+<div class="section-heading"><div><p class="eyebrow">03 / IDEAS IN ACTION</p><h2 id="featured-title">讓作品，<br/>說出學習的故事。</h2></div><div class="section-heading-end"><p>不只停留在想法，<br/>也在真實議題中留下學習的足跡。</p><a class="text-link" href="studentworks.html">瀏覽全部學生作品 <span aria-hidden="true">↗</span></a></div></div>
+<div class="work-grid featured-grid" data-work-grid="featured"></div>
+<noscript><p>精選作品：<a class="" href="https://mdm.tcu.edu.tw/p/406-1021-65256%2Cr930.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">黑水虻處理沼渣廢棄物之可行性評估<span class="sr-only">（另開視窗）</span></a>、<a class="" href="https://mdm.tcu.edu.tw/p/406-1021-65248,r920.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">生成式AI輔助教育訓練試題設計之可行性研究<span class="sr-only">（另開視窗）</span></a>。開啟 JavaScript 可查看完整圖像與作品介紹。</p></noscript>
+<p class="fine-print artwork-note">作品摘要取自公開公告；封面為本站原創編輯主題圖，並非作品實拍。</p>
+</div>
+</section>
+<section aria-labelledby="resources-title" class="resource-section section-pad" id="resources">
+<div class="container"><div class="section-heading"><div><p class="eyebrow">04 / YOUR NEXT STEP</p><h2 id="resources-title">找到你的下一步。</h2></div><p class="section-heading-end">給準備認識經管的你，<br/>也給正在累積專業的你。</p></div>
+<div class="resource-grid">
+<a class="resource-card" href="https://mdm.tcu.edu.tw/p/412-1021-4505.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank"><span class="resource-top">FACULTY <span aria-hidden="true">↗</span></span><h3>師資介紹</h3><p>認識教師的專業領域</p><span class="sr-only">（另開視窗）</span></a>
+<a class="resource-card" href="https://mdm.tcu.edu.tw/p/412-1021-16.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank"><span class="resource-top">CURRICULUM <span aria-hidden="true">↗</span></span><h3>課程規畫</h3><p>查閱各年度課程規範</p><span class="sr-only">（另開視窗）</span></a>
+<a class="resource-card" href="https://mdm.tcu.edu.tw/p/412-1021-5007.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank"><span class="resource-top">INTERNSHIP <span aria-hidden="true">↗</span></span><h3>實習資訊</h3><p>了解實務學習相關資訊</p><span class="sr-only">（另開視窗）</span></a>
+<a class="resource-card" href="https://mdm.tcu.edu.tw/p/412-1021-63.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank"><span class="resource-top">ADMISSIONS <span aria-hidden="true">↗</span></span><h3>招生管道</h3><p>前往官方招生資訊專區</p><span class="sr-only">（另開視窗）</span></a>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer" id="contact">
+<div class="container footer-top">
+<div class="footer-intro"><p class="eyebrow">LET’S CONNECT</p><h2>下一個故事，<br/>從這裡開始。</h2><p>認識經管、探索課程，或開啟合作的可能。</p></div>
+<address class="contact-block">
+<span class="footer-label">系辦公室聯絡資訊</span>
+<a class="contact-email" href="mailto:ss62@gms.tcu.edu.tw">ss62@gms.tcu.edu.tw <span aria-hidden="true">↗</span></a>
+<p><span>電話</span><a href="tel:+88638572677;ext=31682">03-857-2677 分機 31682</a></p>
+<p><span>地址</span>花蓮市介仁街 67 號</p>
+<a class="footer-source" href="https://mdm.tcu.edu.tw/index.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">前往現行系網確認最新資訊 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a>
+</address>
+</div>
+<div class="container footer-bottom">
+<div class="footer-wordmark">TCU<span>BUSINESS MANAGEMENT</span></div>
+<p>人文為本，專業為用。</p>
+<a class="back-to-top" href="#top">回到頂端 <span aria-hidden="true">↑</span></a>
+</div>
+<div class="container publication-note"><p>系網設計提案，非校方官方網站。系務資訊以正式公告為準。原創意象插圖，非校園或產品實拍。</p>
+<details>
+<summary>內容來源與網站聲明 <span aria-hidden="true">＋</span></summary>
+<div class="publication-content">
+<p>本網站為系網設計提案，並非校方正式發布的網站。公開資訊查核日期為 2026 年 10 月 5 日；課程、招生、實習及成果，以原始官方公告為準。</p>
+<p>頁面主題插圖、編輯封面與無聲短片為本次網站原創素材，不是校園、學生或研究成果的實拍；識別圖形不是慈濟大學校徽。</p>
+<p>資料來源：<a class="" href="https://mdm.tcu.edu.tw/p/412-1021-2.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">系所簡介<span class="sr-only">（另開視窗）</span></a>、<a class="" href="https://hm.tcu.edu.tw/p/412-1019-2953.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">學院系所介紹<span class="sr-only">（另開視窗）</span></a>、<a class="" href="https://mdm.tcu.edu.tw/p/412-1021-16.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">課程規畫<span class="sr-only">（另開視窗）</span></a>。各作品附有獨立的原始公告連結。</p>
+<p>本站沒有登入、表單收件、追蹤程式或後台；聯絡連結會開啟您的電子郵件或電話應用程式。正式發布前，須完成校方內容與識別授權審核。</p>
+</div>
+</details>
+<details class="ai-disclosure" id="ai-collaboration">
+<summary>AI 協作與製作紀錄 <span aria-hidden="true">＋</span></summary>
+<div class="publication-content">
+<p>本案運用 AI 協助頁面架構、視覺樣式、程式調整、相對路徑檢查與檔案整合；使用者負責提出系所定位、內容刪修、評分規範及最後呈現方向。</p>
+<p>完整網站已將系所簡介、學生作品、照片與影片版位、提示詞紀錄及測試摘要串聯在同一套導覽中。</p>
+<p><a href="ai-collaboration.html">閱讀完整提示詞、分工與測試紀錄 <span aria-hidden="true">↗</span></a></p>
+</div>
+</details>
+</div>
+</footer>
+<dialog aria-labelledby="dialog-title" class="project-dialog" id="project-dialog">
+<div class="dialog-shell">
+<button aria-label="關閉作品介紹" class="dialog-close" type="button">×</button>
+<img alt="" class="dialog-cover" height="720" id="dialog-cover" src="graph/work-circular.svg" width="1000"/>
+<div class="dialog-content">
+<p class="eyebrow" id="dialog-category"></p>
+<h2 id="dialog-title"></h2>
+<p id="dialog-summary"></p>
+<div class="achievement"><span class="eyebrow">公開成果</span><p id="dialog-achievement"></p></div>
+<p class="fine-print" id="dialog-note"></p>
+<a class="button button-primary" id="dialog-source" rel="noopener noreferrer" target="_blank"><span id="dialog-source-label">閱讀系網原始公告</span> <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a>
+</div>
+</div>
+</dialog>
+<template id="work-template">
+<article class="work-card">
+<a class="work-visual" data-open-project="">
+<img alt="學生作品主題圖" class="work-cover" decoding="async" height="720" loading="lazy" src="graph/hero-world.svg" width="1000"/>
+<span class="work-badge"></span>
+<span aria-hidden="true" class="work-visual-arrow">↗</span>
+</a>
+<div class="work-copy">
+<p class="work-meta"><span class="work-category"></span><span class="work-year"></span></p>
+<h3><a class="work-title" data-open-project=""></a></h3>
+<p class="work-description"></p>
+<div class="work-bottom"><span class="work-tag"></span><a class="text-link work-read" data-open-project="">閱讀成果 <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
+</template>
+<!-- INTERNAL JS: no external script libraries are required. -->
+<script>
+// 同步修改兩頁 STUDENT_WORKS，維持首頁與作品頁內容一致。
+// 學生作品資料：新增作品時，複製一筆物件；圖片與影片路徑限用 graph/。
+// 公開資訊查核日期：2026-10-05。摘要不代表完整研究成果。
+window.STUDENT_WORKS = [
+  {
+    "id": "circular",
+    "category": "永續實踐",
+    "eyebrow": "CIRCULAR ECONOMY",
+    "year": "2025",
+    "title": "讓廢棄物有新的可能",
+    "subtitle": "以黑水虻處理沼渣的可行性研究。",
+    "description": "從資源再利用切入，探索沼渣廢棄物處理的可能性，連結管理研究與環境議題。",
+    "cover": "graph/work-circular.svg",
+    "alt": "循環經濟原創編輯封面：三個交錯的綠色圓環，不是研究現場照片。",
+    "badge": "全國專題競賽・第二名",
+    "tags": [
+      "循環經濟",
+      "資源再利用",
+      "專題研究"
+    ],
+    "fullTitle": "黑水虻處理沼渣廢棄物之可行性評估",
+    "summary": "由蘇美惠老師指導的跨系學生團隊，以「黑水虻處理沼渣廢棄物之可行性評估」參加全國專題競賽。此處僅摘述官方公布的題目與獲獎事實。",
+    "achievement": "2025 全國經營管理專題競賽，管理組第二名。",
+    "note": "原公告未提供完整研究報告與量化結果；本頁不推定處理效率、實驗結論或商業化成效。封面為本站編輯主題圖。",
+    "source": "https://mdm.tcu.edu.tw/p/406-1021-65256%2Cr930.php?Lang=zh-tw",
+    "sourceLabel": "閱讀系網原始公告",
+    "featured": true
+  },
+  {
+    "id": "ai-learning",
+    "category": "數位應用",
+    "eyebrow": "AI & LEARNING",
+    "year": "2025",
+    "title": "當生成式 AI 遇見教育",
+    "subtitle": "探索 AI 輔助教育訓練試題設計。",
+    "description": "以教育訓練為應用情境，探討生成式 AI 輔助試題設計的可行性。",
+    "cover": "graph/work-ai.svg",
+    "alt": "生成式 AI 原創編輯封面：方格與連線組成學習網絡，不是系統操作畫面。",
+    "badge": "全國專題競賽・佳作",
+    "tags": [
+      "生成式 AI",
+      "教育訓練",
+      "數位應用"
+    ],
+    "fullTitle": "生成式AI輔助教育訓練試題設計之可行性研究",
+    "summary": "經管系學生卜光明、徐凱特在林俊銘老師指導下，以生成式 AI 與教育訓練試題設計為題，進行可行性研究並參與專題競賽。",
+    "achievement": "2025 全國經營管理專題競賽，管理組佳作。",
+    "note": "原公告未提供研究全文或系統展示，因此不另宣稱試題品質、準確率或教學成效。封面為本站編輯主題圖。",
+    "source": "https://mdm.tcu.edu.tw/p/406-1021-65248,r920.php?Lang=zh-tw",
+    "sourceLabel": "閱讀系網原始公告",
+    "featured": true
+  },
+  {
+    "id": "sustainsort",
+    "category": "數位應用",
+    "eyebrow": "SMART INNOVATION",
+    "year": "",
+    "title": "SustainSort 智慧分類桶",
+    "subtitle": "把智慧科技放進日常永續行動。",
+    "description": "「AI One Drop 智慧分類桶」提案，串聯智慧應用與廢棄物分類議題。",
+    "cover": "graph/work-sort.svg",
+    "alt": "SustainSort 原創編輯封面：三個幾何色塊象徵分類，並非產品設計或實物照片。",
+    "badge": "校內提案競賽・第三名",
+    "tags": [
+      "智慧應用",
+      "永續提案",
+      "創新創業"
+    ],
+    "fullTitle": "AI One Drop 智慧分類桶｜SustainSort",
+    "summary": "SustainSort 師生團隊以「AI One Drop 智慧分類桶」參加慈濟大學第六屆第二梯次「創客＋了沒」提案競賽，獲得第三名。",
+    "achievement": "慈濟大學第六屆第二梯次「創客＋了沒」提案競賽，第三名。",
+    "note": "此為提案競賽公開資訊，不代表產品已量產、上市或完成效能驗證。封面採抽象分類意象，並非團隊產品外觀。",
+    "source": "https://mdm.tcu.edu.tw/p/406-1021-65682,r920.php?Lang=zh-tw",
+    "sourceLabel": "閱讀系網原始公告",
+    "featured": false
+  }
+];
+
+</script>
+<script>
+/* TCU Business Management — plain JavaScript; works via file:// or HTTP.
+   Edit the STUDENT_WORKS data block in this HTML to maintain the collection. No server or build step is required. */
+"use strict";
+
+document.documentElement.classList.add("js");
+
+(() => {
+  const menuButton = document.querySelector(".menu-toggle");
+  const menu = document.querySelector("#primary-nav");
+  if (!menuButton || !menu) return;
+  const closeMenu = (returnFocus = false) => {
+    menu.classList.remove("is-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    if (returnFocus) menuButton.focus();
+  };
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menu.classList.toggle("is-open", !isOpen);
+  });
+  menu.addEventListener("click", event => {
+    if (event.target.closest("a")) closeMenu();
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && menu.classList.contains("is-open")) closeMenu(true);
+  });
+  document.addEventListener("click", event => {
+    if (!menu.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+  });
+  window.matchMedia("(min-width:881px)").addEventListener("change", event => {
+    if (event.matches) closeMenu();
+  });
+})();
+
+(() => {
+  const records = Array.isArray(window.STUDENT_WORKS) ? window.STUDENT_WORKS : [];
+  const template = document.querySelector("#work-template");
+  const grids = document.querySelectorAll("[data-work-grid]");
+  const dialog = document.querySelector("#project-dialog");
+  const supportedDialog = dialog && typeof dialog.showModal === "function";
+  const normalize = value => String(value || "").normalize("NFKC").toLocaleLowerCase().trim();
+  const validSource = value => /^https:\/\//i.test(String(value));
+  const validCover = value => /^graph\/[a-zA-Z0-9_\-./]+\.(svg|webp|jpe?g|png)$/i.test(String(value))
+    && !String(value).includes("..");
+  const items = records.filter(item =>
+    item && typeof item.id === "string" && typeof item.title === "string"
+    && validCover(item.cover)
+  );
+  let returnFocus = null;
+  let category = "all";
+  let keyword = "";
+  // New categories are added automatically when the collection grows.
+  const group = document.querySelector(".filter-group");
+  if (group) {
+    const existing = new Set(Array.from(group.querySelectorAll("[data-filter]"), button => button.dataset.filter));
+    [...new Set(items.map(item => item.category).filter(Boolean))].forEach(name => {
+      if (existing.has(name)) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "filter-button";
+      button.dataset.filter = name;
+      button.setAttribute("aria-pressed", "false");
+      button.textContent = name;
+      group.append(button);
+    });
+  }
+  const buttons = Array.from(document.querySelectorAll("[data-filter]"));
+  const search = document.querySelector("#work-search");
+  const clear = document.querySelector(".search-clear");
+  const count = document.querySelector("#results-count");
+  const empty = document.querySelector("#no-results");
+
+  function renderCard(item) {
+    const fragment = template.content.cloneNode(true);
+    const card = fragment.querySelector(".work-card");
+    card.dataset.id = item.id;
+    const image = card.querySelector(".work-cover");
+    image.src = item.cover;
+    image.alt = item.alt || `${item.title}作品主題圖`;
+    image.addEventListener("error", () => {
+      if (image.dataset.fallback) return;
+      image.dataset.fallback = "true";
+      image.src = "graph/hero-world.svg";
+      image.alt = "原封面無法載入，改以本站原創主題圖顯示。";
+    });
+    card.querySelector(".work-badge").textContent = item.badge || item.category;
+    card.querySelector(".work-category").textContent = item.category || "學生作品";
+    card.querySelector(".work-year").textContent = item.year || "公開成果";
+    card.querySelector(".work-title").textContent = item.title;
+    card.querySelector(".work-description").textContent = item.description || "";
+    const tags = Array.isArray(item.tags) ? item.tags : [];
+    card.querySelector(".work-tag").textContent = tags.slice(0, 2).join(" / ");
+    card.querySelectorAll("[data-open-project]").forEach(link => {
+      link.href = validSource(item.source) ? item.source : item.cover;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.dataset.projectId = item.id;
+      if (supportedDialog) {
+        link.setAttribute("aria-haspopup", "dialog");
+        link.setAttribute("aria-controls", "project-dialog");
+      }
+      if (!link.classList.contains("work-title")) {
+        link.setAttribute("aria-label", `閱讀${item.title}的公開成果摘要`);
+      }
+    });
+    return fragment;
+  }
+
+  function matches(item) {
+    const categoryMatch = category === "all" || item.category === category;
+    const haystack = normalize([
+      item.title, item.fullTitle, item.subtitle, item.description, item.category,
+      item.year, ...(Array.isArray(item.tags) ? item.tags : [])
+    ].join(" "));
+    return categoryMatch && (!keyword || haystack.includes(normalize(keyword)));
+  }
+
+  function syncAddress() {
+    if (!search) return;
+    try {
+      const url = new URL(window.location.href);
+      if (category === "all") url.searchParams.delete("category");
+      else url.searchParams.set("category", category);
+      if (keyword.trim()) url.searchParams.set("q", keyword.trim());
+      else url.searchParams.delete("q");
+      // Some browsers restrict replaceState under file://; the interface still works.
+      window.history.replaceState(null, "", url);
+    } catch (_error) { /* URL syncing is optional in local-file mode. */ }
+  }
+
+  function render(updateAddress = true) {
+    if (!template) return;
+    const filtered = items.filter(matches);
+    grids.forEach(grid => {
+      const selected = grid.dataset.workGrid === "featured"
+        ? items.filter(item => item.featured).slice(0, 2)
+        : filtered;
+      const fragment = document.createDocumentFragment();
+      selected.forEach(item => fragment.append(renderCard(item)));
+      grid.replaceChildren(fragment);
+    });
+    if (count) count.textContent = `顯示 ${filtered.length} 件作品，共 ${items.length} 件`;
+    if (empty) empty.hidden = filtered.length > 0;
+    if (clear) clear.hidden = !keyword;
+    buttons.forEach(button => {
+      const active = button.dataset.filter === category;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (updateAddress) syncAddress();
+  }
+
+  if (search) {
+    const parameters = new URLSearchParams(window.location.search);
+    const requestedCategory = parameters.get("category");
+    if (buttons.some(button => button.dataset.filter === requestedCategory)) {
+      category = requestedCategory;
+    }
+    keyword = parameters.get("q") || "";
+    search.value = keyword;
+    const updateSearch = () => { keyword = search.value; render(); };
+    search.addEventListener("input", updateSearch);
+    search.addEventListener("search", updateSearch);
+    search.closest("form").addEventListener("submit", event => {
+      event.preventDefault();
+      updateSearch();
+    });
+    if (clear) clear.addEventListener("click", () => {
+      keyword = "";
+      search.value = "";
+      render();
+      search.focus();
+    });
+    const reset = document.querySelector("#reset-filters");
+    if (reset) reset.addEventListener("click", () => {
+      category = "all";
+      keyword = "";
+      search.value = "";
+      render();
+      buttons[0]?.focus();
+    });
+    document.querySelector(".work-tools").hidden = false;
+  }
+  buttons.forEach(button => button.addEventListener("click", () => {
+    category = button.dataset.filter || "all";
+    render();
+  }));
+
+  function showProject(item, trigger) {
+    if (!supportedDialog) return false;
+    returnFocus = trigger;
+    const image = document.querySelector("#dialog-cover");
+    image.src = item.cover;
+    image.alt = item.alt || `${item.title}作品主題圖`;
+    document.querySelector("#dialog-category").textContent =
+      `${item.eyebrow || "STUDENT WORK"} / ${item.category}`;
+    document.querySelector("#dialog-title").textContent = item.fullTitle || item.title;
+    document.querySelector("#dialog-summary").textContent = item.summary || item.description;
+    document.querySelector("#dialog-achievement").textContent = item.achievement || "請參閱原始公開資料。";
+    document.querySelector("#dialog-note").textContent = item.note || "";
+    const sourceLink = document.querySelector("#dialog-source");
+    sourceLink.hidden = !validSource(item.source);
+    if (validSource(item.source)) sourceLink.href = item.source;
+    else sourceLink.removeAttribute("href");
+    document.querySelector("#dialog-source-label").textContent = item.sourceLabel || "閱讀原始資料";
+    document.querySelector(".achievement").hidden = !item.achievement;
+    dialog.showModal();
+    dialog.scrollTop = 0;
+    document.body.classList.add("modal-open");
+    document.querySelector(".dialog-close").focus();
+    return true;
+  }
+  document.addEventListener("click", event => {
+    const link = event.target.closest("[data-project-id]");
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    const item = items.find(record => record.id === link.dataset.projectId);
+    if (item && supportedDialog) {
+      event.preventDefault();
+      showProject(item, link);
+    }
+  });
+  if (supportedDialog) {
+    dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", event => {
+      if (event.target === dialog) {
+        const rect = dialog.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right ||
+            event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+      }
+    });
+    dialog.addEventListener("close", () => {
+      document.body.classList.remove("modal-open");
+      if (returnFocus?.isConnected) returnFocus.focus({preventScroll:true});
+    });
+    document.querySelectorAll(".spotlight-card[data-project-id]").forEach(link => {
+      link.setAttribute("aria-haspopup", "dialog");
+      link.setAttribute("aria-controls", "project-dialog");
+    });
+  }
+  render(false);
+})();
+
+(() => {
+  const video = document.querySelector("#learning-video");
+  const notice = document.querySelector(".video-error");
+  if (!video || !notice) return;
+  const onError = () => { notice.hidden = false; };
+  video.addEventListener("error", onError);
+  video.querySelector("source")?.addEventListener("error", onError);
+  video.addEventListener("loadeddata", () => { notice.hidden = true; });
+})();
+
+</script>
+</body>
+</html>

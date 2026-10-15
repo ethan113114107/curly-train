@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="查看慈濟大學經營管理學系網站提案的 AI 協作 Prompt、設計調整、整合成果與測試紀錄。" name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#164b3e" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="zh_TW" property="og:locale"/>
+<meta content="慈濟大學經營管理學系網站提案" property="og:site_name"/>
+<meta content="AI 協作與製作紀錄｜慈濟大學經營管理學系" property="og:title"/>
+<meta content="完整整理網站架構、提示詞、整合成果與品質檢查。" property="og:description"/>
+<title>AI 協作紀錄｜慈濟大學經營管理學系</title>
+<link href="graph/brand-mark.svg" rel="icon" type="image/svg+xml"/>
+<style>
+/* TCU Business Management — shared presentation layer.
+   No external fonts, libraries, tracking pixels or image services. */
+:root {
+ --ink:#2e191c; --green:#451c22; --green-2:#6b353d; --sage:#d79da6;
+ --paper:#f7f4f3; --warm:#efe9e5; --line:#dfd7d2; --muted:#6b5c5e;
+ --white:#fff; --radius:8px;
+ --sans:"Noto Sans CJK TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+ --serif:"Noto Serif CJK TC","Noto Serif TC","Songti TC","PMingLiU",serif;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:110px}
+body {margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased}
+body.modal-open {overflow:hidden}
+a {color:inherit;text-decoration:none}
+a,button,input,summary {-webkit-tap-highlight-color:transparent}
+button,input {font:inherit}
+button {cursor:pointer}
+button:disabled {cursor:default}
+img,video {display:block;max-width:100%;height:auto}
+img {color:var(--green)}
+figure,p,h1,h2,h3 {margin:0}
+h1,h2,h3 {line-height:1.4}
+h1,h2 {font-family:var(--serif);font-weight:600;letter-spacing:-.035em}
+h1 {font-size:clamp(2.5rem,4.45vw,4rem);line-height:1.52}
+h2 {font-size:clamp(1.9rem,3.05vw,2.75rem);line-height:1.5}
+h3 {font-weight:600}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,video:focus-visible {outline:3px solid #863743;outline-offset:5px}
+a:hover {text-decoration:none}
+::selection {background:var(--sage);color:var(--green)}
+[hidden] {display:none !important}
+.container {width:min(1224px,calc(100% - 96px));margin-inline:auto}
+.section-pad {padding-block:94px}
+.eyebrow {font:600 11px/1.6 var(--sans);letter-spacing:.17em;color:var(--green-2);margin-bottom:20px}
+.green-text {color:var(--green-2)}
+.sr-only {position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link {position:fixed;z-index:1000;top:8px;left:12px;padding:10px 20px;background:var(--green);color:white;transform:translateY(-160%)}
+.skip-link:focus {transform:translateY(0)}
+.small-dot {display:inline-block;flex-shrink:0;width:6px;height:6px;border-radius:50%;background:currentColor}
+.mobile-only {display:none}
+
+/* Global navigation */
+.utility-bar {background:var(--green);color:#ebe3df;font-size:11px;letter-spacing:.035em}
+.utility-inner {min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.utility-inner>div {display:flex;gap:28px}
+.utility-inner a:hover {color:#fff;text-decoration:underline}
+.utility-separator {margin:0 12px;opacity:.5}
+.site-header {position:sticky;top:0;background:rgba(248,248,242,.98);z-index:50;border-bottom:1px solid var(--line)}
+.header-inner {min-height:93px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand {display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand img {width:48px;height:48px}
+.brand-copy {display:flex;flex-direction:column;line-height:1.35}
+.brand-university {font-size:12px;letter-spacing:.18em}
+.brand-department {font-size:23px;font-weight:700;letter-spacing:.055em;margin-top:4px}
+.primary-nav {display:flex;align-items:center;gap:20px;font-size:14px}
+.primary-nav>a {position:relative;padding-block:32px;white-space:nowrap}
+.primary-nav>a:not(.nav-contact)::after {content:"";position:absolute;left:0;right:0;bottom:19px;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.primary-nav>a[aria-current],.primary-nav>a:hover {color:var(--green);font-weight:600}
+.primary-nav>a[aria-current]::after,.primary-nav>a:hover::after {transform:scaleX(1)}
+.primary-nav .nav-contact {background:#e8dfda;padding:11px 18px;border-radius:3px;font-size:13px}
+.nav-contact span {margin-left:15px}
+.primary-nav .nav-contact:hover {background:#ddd1ca}
+.menu-toggle {display:none}
+
+/* Reusable components */
+.button {display:inline-flex;justify-content:center;align-items:center;gap:32px;min-height:53px;padding:13px 23px;font-size:14px;line-height:1.65;font-weight:600;border:1px solid transparent;border-radius:4px;transition:background .18s,transform .18s}
+.button-primary {background:var(--green);color:#fff}
+.button-primary:hover {background:#632931;transform:translateY(-2px)}
+.button-plain {padding-inline:10px;color:var(--green)}
+.button-plain:hover {background:var(--warm)}
+.button span[aria-hidden] {font-size:21px;font-weight:400;line-height:1}
+.text-link {display:inline-flex;align-items:center;gap:20px;font-size:13px;font-weight:600;line-height:1.8;padding-bottom:4px;border-bottom:1px solid currentColor;color:var(--green)}
+.text-link span[aria-hidden] {font-size:20px;transition:transform .18s}
+.text-link:hover span[aria-hidden] {transform:translate(2px,-2px)}
+.section-heading {display:flex;align-items:flex-end;justify-content:space-between;gap:70px;margin-bottom:42px}
+.section-heading-end {color:var(--muted);font-size:14px;flex-shrink:0;max-width:390px}
+.section-heading-end .text-link {margin-top:18px}
+.section-intro {max-width:495px;color:var(--muted);font-size:16px}
+.section-intro p+p {margin-top:14px}
+.section-intro .text-link {margin-top:22px}
+.fine-print {font-size:12px;line-height:1.9;color:var(--muted)}
+.pill {display:inline-block;border:1px solid var(--line);border-radius:3px;padding:7px 11px;font-size:10px;letter-spacing:.1em;font-weight:600;color:var(--green)}
+
+/* Home */
+.home-hero {display:grid;grid-template-columns:1.08fr 1fr;gap:44px;padding-top:53px;padding-bottom:67px;align-items:center}
+.hero-copy {padding-block:17px 0}
+.hero-kicker {display:inline-flex;align-items:center;gap:9px;background:#eae3df;padding:5px 12px;border-radius:4px;color:var(--green);font-size:12px;letter-spacing:.07em;margin-bottom:24px}
+.hero-english {margin-bottom:13px;font-size:10px;letter-spacing:.13em}
+.hero-description {font-size:15px;line-height:2.1;color:var(--muted);margin-top:24px}
+.hero-actions {display:flex;align-items:center;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero-footnote {display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.mini-label {font-size:9px;letter-spacing:.18em;font-weight:600;color:var(--muted)}
+.hero-footnote p {font-size:12px;margin-top:4px;color:var(--muted)}
+.scroll-down {display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;font-size:20px}
+.scroll-down:hover {background:var(--warm)}
+.hero-visual {position:relative;overflow:hidden;max-width:555px;margin-left:auto;width:100%;border-radius:130px 5px 5px 5px}
+.hero-visual>img {width:100%;aspect-ratio:.9;object-fit:cover}
+.hero-visual figcaption {position:absolute;right:23px;top:24px;color:var(--green);background:#e5dbd6;border-radius:40px;padding:8px 15px;font-size:11px;display:flex;align-items:center;gap:8px}
+.about-section {border-top:1px solid var(--line);background:var(--warm)}
+.about-heading {align-items:center;margin-bottom:48px}
+.values-grid {display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7ccc6;padding-top:34px}
+.value-item {padding:0 28px;border-right:1px solid #d7ccc6}
+.value-item:first-child {padding-left:0}
+.value-item:last-child {border-right:0;padding-right:0}
+.value-number {font-family:var(--serif);font-size:21px;color:#7d585e}
+.value-item h3 {font-family:var(--serif);font-size:24px;margin-top:15px;margin-bottom:9px}
+.value-item p {color:var(--muted);font-size:13px;line-height:1.9;max-width:210px}
+.value-item>span:last-child {display:block;font-size:9px;letter-spacing:.12em;color:var(--green-2);margin-top:24px}
+.learning-layout {display:grid;grid-template-columns:1fr 1.04fr;gap:74px;align-items:center}
+.learning-visual {background:#e1d6d0;border-radius:5px;overflow:hidden}
+.learning-visual img {width:100%;aspect-ratio:1/1.02;object-fit:cover;object-position:50% 50%}
+.learning-visual figcaption {background:#ddd0c9;color:var(--green);padding:13px 20px;font-size:10px;letter-spacing:.1em;display:flex;justify-content:space-between;gap:10px}
+.learning-visual figcaption span {font-size:10px;letter-spacing:0;color:var(--muted)}
+.learning-copy .section-lead {font-size:14px;color:var(--muted);margin-top:17px}
+.learning-details {margin-top:24px;border-top:1px solid var(--line)}
+.learning-details details {border-bottom:1px solid var(--line)}
+.learning-details summary {display:flex;align-items:center;list-style:none;gap:16px;font-size:15px;font-weight:600;cursor:pointer;padding-block:20px}
+summary::-webkit-details-marker {display:none}
+.detail-index {font-family:var(--serif);font-size:13px;font-weight:400;color:var(--muted)}
+.detail-plus {margin-left:auto;font-weight:400;font-size:21px;transition:transform .2s}
+details[open] .detail-plus {transform:rotate(45deg)}
+.detail-body {padding:0 0 20px 34px;font-size:13px;color:var(--muted)}
+.detail-body .text-link {margin-top:10px;font-size:12px}
+.learning-copy>.fine-print {margin-top:19px;font-size:11px}
+.featured-section {background:#f1ecea;border-top:1px solid #e5ddd8;border-bottom:1px solid #e5ddd8}
+.artwork-note {margin-top:24px;font-size:11px}
+.resource-grid {display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.resource-card {padding:26px 26px 29px;border-right:1px solid var(--line);transition:background .2s}
+.resource-card:last-child {border-right:0}
+.resource-card:hover {background:#ede6e2}
+.resource-top {display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.13em;color:var(--green-2)}
+.resource-top>span {font-size:20px}
+.resource-card h3 {font-family:var(--serif);font-size:24px;margin-top:24px}
+.resource-card p {font-size:12px;color:var(--muted);margin-top:6px}
+
+/* Project collection */
+.work-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:42px 32px}
+.work-card {min-width:0}
+.work-visual {display:block;position:relative;overflow:hidden;background:#e9e1dc;border-radius:6px}
+.work-cover {width:100%;aspect-ratio:1000/720;object-fit:cover;transition:transform .45s}
+.work-visual:hover .work-cover {transform:scale(1.025)}
+.work-badge {position:absolute;left:18px;top:18px;padding:5px 11px;background:rgba(248,248,241,.94);color:var(--green);border-radius:3px;box-shadow:0 2px 15px #142e1510;font-size:10px;letter-spacing:.025em}
+.work-visual-arrow {position:absolute;right:18px;bottom:18px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--paper);color:var(--green);font-size:23px;transition:transform .2s}
+.work-visual:hover .work-visual-arrow {transform:rotate(45deg)}
+.work-copy {padding:22px 1px 0}
+.work-meta {display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.06em;color:var(--green-2)}
+.work-year {font-variant-numeric:tabular-nums;color:var(--muted)}
+.work-card h3 {font-family:var(--serif);font-size:25px;margin-top:8px;line-height:1.5}
+.work-title:hover {color:var(--green-2)}
+.work-description {font-size:13px;color:var(--muted);line-height:1.95;margin-top:12px;max-width:550px}
+.work-bottom {display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:17px;margin-top:22px;border-top:1px solid var(--line)}
+.work-tag {font-size:10px;color:var(--muted)}
+.work-bottom .text-link {border-bottom:0;padding:0;font-size:12px;flex-shrink:0}
+.works-hero {padding-block:54px 72px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.breadcrumb {display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted);margin-bottom:38px}
+.breadcrumb a:hover {text-decoration:underline}
+.works-hero .eyebrow {font-size:10px;margin-bottom:15px}
+.works-hero h1 {font-size:clamp(2.5rem,4.45vw,4rem)}
+.works-hero .text-link {margin-top:28px}
+.spotlight-card {border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#f2edea;margin-top:8px}
+.spotlight-card>img {width:100%;aspect-ratio:1000/720;object-fit:cover;transition:transform .4s}
+.spotlight-card:hover>img {transform:scale(1.018)}
+.spotlight-caption {display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 27px;position:relative;background:#f2edea}
+.spotlight-caption>div>span {font-size:9px;color:var(--green-2);letter-spacing:.1em}
+.spotlight-caption h2 {font-size:28px;margin-top:4px}
+.spotlight-caption p {font-size:12px;color:var(--muted);margin-top:5px}
+.circle-arrow {flex-shrink:0;width:43px;height:43px;border:1px solid #cbbfb8;border-radius:50%;display:grid;place-items:center;font-size:24px;color:var(--green)}
+.projects-section {background:var(--warm);border-block:1px solid var(--line)}
+.section-heading.compact {margin-bottom:30px}
+.work-tools {display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:23px;border-bottom:1px solid #d7ccc6}
+.filter-group {display:flex;gap:8px;flex-wrap:wrap}
+.filter-button {display:block;border:1px solid #d3c7c1;border-radius:30px;background:transparent;color:var(--muted);padding:9px 17px;min-height:42px;font-size:12px}
+.filter-button.is-active {background:var(--green);color:#fff;border-color:var(--green)}
+.filter-button:hover:not(.is-active) {background:#e5dcd7}
+.work-search {position:relative;width:265px;flex-shrink:0}
+.work-search input {width:100%;height:44px;padding:8px 37px 8px 40px;background:#f9f7f5;border:1px solid #d2c7c1;border-radius:4px;font-size:12px;color:var(--ink)}
+.work-search input::-webkit-search-cancel-button {display:none}
+.work-search input::placeholder {color:#6b5c5e;opacity:1}
+.search-symbol {width:13px;height:13px;border:1.5px solid var(--muted);border-radius:50%;position:absolute;top:14px;left:15px;pointer-events:none}
+.search-symbol::after {content:"";position:absolute;right:-5px;bottom:-3px;width:6px;height:1.5px;background:var(--muted);transform:rotate(45deg)}
+.search-clear {position:absolute;right:4px;top:3px;width:35px;height:38px;border:0;background:transparent;color:var(--muted);font-size:22px}
+.collection-meta {display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted);margin-block:22px 27px;min-height:22px}
+.collection-meta>p:last-child {font-size:10px}
+.collection-meta span {padding-inline:7px;color:#9a8689}
+.no-results {padding:65px 25px;text-align:center;border:1px dashed #bb9fa3;border-radius:6px}
+.no-results h3 {font-family:var(--serif);font-size:25px;margin-top:15px}
+.no-results p {font-size:14px;color:var(--muted);margin-block:15px 23px}
+.empty-mark {display:grid;place-items:center;width:60px;height:60px;background:#e2d8d2;color:var(--green);border-radius:50%;font-size:32px;margin:auto}
+.noscript-notice {padding:24px;border:1px solid var(--line)}
+.noscript-notice a {text-decoration:underline}
+.media-layout {display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:48px;align-items:center}
+.video-wrap {background:#36161b;border-radius:6px;overflow:hidden}
+.video-wrap video {width:100%;aspect-ratio:16/9;object-fit:contain;background:#36161b}
+.video-error {padding:20px;color:#fff;font-size:13px}
+.media-copy h3 {font-family:var(--serif);font-size:28px;margin-block:17px 12px}
+.media-copy>p {font-size:13px;line-height:2;color:var(--muted)}
+.media-copy .media-spec {font-size:10px;margin-top:18px;letter-spacing:.05em}
+.media-spec span {margin-inline:10px}
+.media-rule {height:1px;background:var(--line);margin-block:20px}
+.media-copy .fine-print {font-size:11px}
+.video-transcript {margin-top:23px;font-size:12px;border-bottom:1px solid var(--line)}
+.video-transcript summary {list-style:none;display:flex;justify-content:space-between;gap:20px;cursor:pointer;color:var(--green);padding-block:13px}
+.video-transcript>div {padding-bottom:20px;color:var(--muted)}
+.video-transcript p+p {margin-top:5px}
+.works-closing {padding:64px 0 75px;text-align:center;background:#f0eae7}
+.works-closing h2 {font-size:32px}
+.works-closing p:not(.eyebrow) {margin-top:14px;font-size:14px;color:var(--muted)}
+.works-closing .button {margin-top:24px}
+
+/* Footer */
+.site-footer {background:#3b181d;color:#eae2de;padding:65px 0 21px}
+.footer-top {display:grid;grid-template-columns:1fr 1.1fr;gap:70px;padding-bottom:51px}
+.site-footer .eyebrow {color:#d59fa7;font-size:10px}
+.footer-intro h2 {font-size:36px}
+.footer-intro>p:last-child {font-size:12px;color:#cec3bd;margin-top:15px}
+.contact-block {font-style:normal;align-self:center}
+.footer-label {font-size:11px;color:#cec3bd;letter-spacing:.06em}
+.contact-email {font-size:clamp(1.15rem,2.1vw,1.8rem);display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:17px;margin-bottom:20px;border-bottom:1px solid #694c50;letter-spacing:.01em;overflow-wrap:anywhere}
+.contact-email:hover {color:#d2c1b8}
+.contact-block>p {font-size:13px;margin-top:8px;display:flex;gap:30px;flex-wrap:wrap}
+.contact-block>p>span {color:#cbbfb9}
+.footer-source {display:inline-flex;font-size:11px;color:#d1c2b9;gap:12px;margin-top:19px}
+.footer-source:hover {text-decoration:underline}
+.footer-bottom {display:flex;align-items:center;justify-content:space-between;gap:25px;border-top:1px solid #5a3b40;padding-block:25px}
+.footer-wordmark {font-size:21px;font-weight:600;letter-spacing:.045em}
+.footer-wordmark span {font-size:9px;font-weight:400;letter-spacing:.13em;margin-left:18px;vertical-align:middle}
+.footer-bottom>p {font-size:11px;color:#cfc4be}
+.back-to-top {font-size:11px;color:#e1d7d1}
+.back-to-top span {margin-left:17px;font-size:17px}
+.publication-note {border-top:1px solid #5a3b40}
+.publication-note summary {list-style:none;padding-top:16px;display:flex;justify-content:space-between;cursor:pointer;font-size:10px;color:#cabfb9}
+.publication-content {font-size:11px;color:#cdc2bc;padding-top:15px;line-height:1.9}
+.publication-content p+p {margin-top:9px}
+.publication-content a {text-decoration:underline;text-underline-offset:3px}
+
+/* Accessible dialog: enhanced over real source hyperlinks */
+.project-dialog {width:min(940px,calc(100% - 40px));max-height:88dvh;max-height:88vh;padding:0;border:0;border-radius:8px;color:var(--ink);background:var(--paper);box-shadow:0 35px 100px #071e2340;overflow:auto}
+.project-dialog::backdrop {background:rgba(8,31,23,.72);backdrop-filter:blur(5px)}
+.dialog-shell {position:relative}
+.dialog-close {position:absolute;top:15px;right:15px;z-index:2;display:grid;place-items:center;border:1px solid #d4c7c0;border-radius:50%;background:var(--paper);color:var(--green);width:44px;height:44px;font-size:27px;line-height:1}
+.dialog-cover {width:100%;height:280px;object-fit:cover;object-position:50% 35%}
+.dialog-content {padding:30px 42px 40px}
+.dialog-content h2 {font-size:29px;line-height:1.6;letter-spacing:0}
+.dialog-content .eyebrow {margin-bottom:10px}
+#dialog-summary {margin-top:17px;font-size:14px;line-height:2;color:var(--muted)}
+.achievement {background:#ece4e0;border-left:3px solid #946068;margin-top:22px;padding:18px 20px}
+.achievement .eyebrow {font-size:10px;margin:0}
+.achievement p {font-size:14px;font-weight:500;margin-top:8px}
+#dialog-note {margin-top:18px;font-size:11px}
+#dialog-source {margin-top:25px;font-size:13px}
+
+/* Medium and small screens */
+@media (min-width:1450px) {
+ .home-hero {gap:58px}
+ h1,.works-hero h1 {font-size:65px}
+}
+@media (max-width:1100px) {
+ .container {width:calc(100% - 64px)}
+ .primary-nav {gap:20px;font-size:12px}
+ .brand-department {font-size:21px}
+ .home-hero {gap:32px}
+ h1,.works-hero h1 {font-size:49px}
+ .hero-description {font-size:14px}
+ .hero-visual {border-top-left-radius:100px}
+ .hero-visual figcaption {right:13px;top:14px;font-size:10px}
+ .hero-actions {gap:5px}
+ .hero-actions .button {font-size:12px;gap:15px;padding:12px 16px}
+ .hero-footnote {margin-top:30px}
+ .learning-layout {gap:40px}
+ .works-hero {gap:42px}
+ .resource-card {padding:22px 18px}
+ .section-heading {gap:45px}
+ .media-layout {gap:30px}
+ .value-item {padding-inline:22px}
+}
+@media (max-width:880px) {
+ .container {width:calc(100% - 48px)}
+ .header-inner {min-height:80px;flex-wrap:wrap;gap:0}
+ .brand img {width:42px;height:42px}
+ .brand-department {font-size:20px}
+ .brand-university {font-size:10px}
+ .menu-toggle {display:none;gap:9px;align-items:center;min-height:44px;background:none;border:1px solid var(--line);border-radius:3px;padding:8px 10px;color:var(--green);font-size:12px}
+ .js .menu-toggle {display:flex}
+ .menu-bars {position:relative;width:17px;height:12px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+ .menu-bars::after {position:absolute;content:"";height:1.5px;background:currentColor;top:4px;left:0;right:0}
+ .primary-nav {width:100%;flex-wrap:wrap;gap:6px 20px;padding:12px 0 18px;border-top:1px solid var(--line)}
+ .primary-nav>a {padding-block:8px;font-size:14px}
+ .primary-nav>a:not(.nav-contact)::after {bottom:1px}
+ .primary-nav .nav-contact {padding:8px 16px}
+ .js .primary-nav {display:none}
+ .js .primary-nav.is-open {display:flex}
+ html {scroll-padding-top:92px}
+ .home-hero {padding-top:35px;padding-bottom:45px;gap:28px}
+ h1,.works-hero h1 {font-size:40px}
+ .hero-kicker {font-size:10px;margin-bottom:19px}
+ .hero-english {font-size:8px}
+ .hero-description {font-size:12px;margin-top:18px}
+ .hero-actions {margin-top:22px}
+ .hero-footnote {margin-top:23px;padding-top:16px}
+ .hero-footnote p {font-size:10px}
+ .hero-visual {border-top-left-radius:80px}
+ .hero-visual figcaption {font-size:8px;padding:6px 9px;right:10px;top:14px}
+ .hero-visual>img {aspect-ratio:.76}
+ .section-pad {padding-block:65px}
+ .section-heading {gap:30px}
+ .section-intro {max-width:390px;font-size:14px}
+ .value-item {padding-inline:16px}
+ .value-item h3 {font-size:21px}
+ .value-item p {font-size:12px}
+ .value-item>span:last-child {font-size:8px;letter-spacing:.05em}
+ .learning-layout {gap:30px}
+ .learning-copy .section-lead {font-size:12px}
+ .learning-details summary {font-size:13px;gap:10px}
+ .detail-body {padding-left:25px;font-size:12px}
+ .learning-visual img {aspect-ratio:.75}
+ .learning-visual figcaption {display:block;font-size:9px;padding:10px 14px}
+ .learning-visual figcaption span {display:block;font-size:9px}
+ .resource-grid {grid-template-columns:repeat(2,1fr)}
+ .resource-card:nth-child(2) {border-right:0}
+ .resource-card:nth-child(-n+2) {border-bottom:1px solid var(--line)}
+ .resource-card {padding:22px}
+ .resource-card h3 {margin-top:15px}
+ .works-hero {padding-block:36px 49px;gap:35px}
+ .works-hero .breadcrumb {margin-bottom:26px}
+ .works-hero .eyebrow {font-size:9px}
+ .spotlight-caption {padding:18px}
+ .spotlight-caption>div>span {font-size:8px}
+ .spotlight-caption h2 {font-size:24px}
+ .spotlight-caption p {font-size:10px}
+ .work-tools {flex-direction:column;align-items:stretch}
+ .work-search {width:100%;max-width:none}
+ .work-grid {gap:32px 22px}
+ .work-card h3 {font-size:22px}
+ .work-description {font-size:12px}
+ .work-badge {font-size:9px;top:12px;left:12px}
+ .work-bottom {flex-wrap:wrap;gap:8px}
+ .media-layout {grid-template-columns:1fr;gap:24px}
+ .media-copy {max-width:650px}
+ .media-copy .media-rule {margin-block:15px}
+ .media-copy h3 {font-size:25px}
+ .footer-top {gap:35px}
+ .footer-intro h2 {font-size:30px}
+ .footer-wordmark span {display:block;margin:0}
+}
+@media (max-width:600px) {
+ .container {width:calc(100% - 40px)}
+ .utility-inner {min-height:29px;font-size:9px;gap:10px}
+ .utility-inner>div {gap:14px}
+ .utility-inner>div>a:first-child {display:none}
+ .utility-separator {margin:0 5px}
+ .header-inner {min-height:75px}
+ .brand {gap:9px}
+ .brand img {width:39px;height:39px}
+ .brand-department {font-size:19px;letter-spacing:.045em}
+ .brand-university {font-size:10px}
+ .menu-toggle {min-height:44px}
+ .primary-nav {flex-direction:column;align-items:stretch;gap:3px}
+ .primary-nav>a {padding:11px 8px;font-size:14px}
+ .primary-nav>a:not(.nav-contact)::after {display:none}
+ .primary-nav>a[aria-current] {background:#eae3df;border-radius:3px}
+ .primary-nav .nav-contact {margin-top:6px}
+ .home-hero {grid-template-columns:1fr;gap:31px;padding-block:27px 43px}
+ .hero-copy {padding-top:0}
+ .hero-kicker {font-size:11px;padding:5px 10px;margin-bottom:20px}
+ .hero-english {font-size:8px;letter-spacing:.14em;margin-bottom:8px}
+ h1,.works-hero h1 {font-size:clamp(33px,8.65vw,49px);line-height:1.55}
+ .hero-description {font-size:14px;line-height:2;margin-top:17px}
+ .mobile-only {display:block}
+ .hero-actions {margin-top:24px;gap:15px}
+ .hero-actions .button {font-size:12px;padding:12px 17px;min-height:49px;gap:17px}
+ .hero-actions .button-plain {padding-inline:1px}
+ .hero-footnote {margin-top:26px;padding-top:17px}
+ .hero-footnote p {font-size:11px}
+ .mini-label {font-size:8px}
+ .scroll-down {width:36px;height:36px}
+ .hero-visual {width:100%;max-width:none;border-radius:75px 4px 4px 4px}
+ .hero-visual>img {aspect-ratio:1.06;object-position:50% 61%}
+ .hero-visual figcaption {font-size:9px;top:15px;right:14px;padding:7px 11px}
+ .section-pad {padding-block:49px}
+ .eyebrow {font-size:9px;margin-bottom:13px}
+ h2 {font-size:29px;line-height:1.55}
+ .section-heading {display:block;margin-bottom:29px}
+ .section-heading-end {margin-top:19px;font-size:12px;max-width:100%}
+ .section-heading-end .text-link {margin-top:14px}
+ .section-intro {max-width:none;font-size:14px;margin-top:22px}
+ .section-intro p+p {margin-top:11px}
+ .section-intro .text-link {margin-top:17px}
+ .values-grid {grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0}
+ .value-item {padding:23px 15px 24px !important;border-bottom:1px solid #d7ccc6}
+ .value-item:nth-child(2n) {border-right:0;padding-right:0 !important}
+ .value-item:nth-child(2n+1) {padding-left:0 !important}
+ .value-item:nth-child(n+3) {border-bottom:0}
+ .value-item h3 {font-size:22px;margin-top:10px;margin-bottom:8px}
+ .value-item p {font-size:12px;max-width:165px}
+ .value-item>span:last-child {font-size:8px;margin-top:18px}
+ .value-number {font-size:19px}
+ .learning-layout {grid-template-columns:1fr;gap:30px}
+ .learning-visual img {aspect-ratio:1.18;object-position:50% 45%}
+ .learning-visual figcaption {display:flex;align-items:center;justify-content:space-between}
+ .learning-copy .section-lead {font-size:13px}
+ .learning-details summary {font-size:14px;padding-block:19px}
+ .learning-details {margin-top:20px}
+ .detail-body {font-size:12px}
+ .learning-copy>.fine-print {font-size:10px}
+ .work-grid {grid-template-columns:1fr;gap:34px}
+ .work-cover {aspect-ratio:1000/720}
+ .work-copy {padding-top:17px}
+ .work-card h3 {font-size:23px}
+ .work-description {font-size:14px;margin-top:10px}
+ .work-bottom {margin-top:17px;padding-top:13px}
+ .work-tag {font-size:9px}
+ .work-badge {top:13px;left:13px;font-size:9px;padding:5px 9px}
+ .work-visual-arrow {width:36px;height:36px;bottom:13px;right:13px;font-size:21px}
+ .artwork-note {font-size:10px;margin-top:22px}
+ .resource-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+ .resource-card {padding:19px 15px}
+ .resource-top {font-size:8px;letter-spacing:.07em}
+ .resource-card h3 {font-size:22px;margin-top:16px}
+ .resource-card p {font-size:10px}
+ .works-hero {grid-template-columns:1fr;gap:32px;padding-block:20px 40px}
+ .breadcrumb {font-size:10px;margin-bottom:27px !important}
+ .works-hero .eyebrow {font-size:8px;letter-spacing:.15em}
+ .works-hero .hero-description {font-size:14px}
+ .works-hero .text-link {margin-top:23px}
+ .spotlight-card {margin-top:0}
+ .spotlight-card>img {aspect-ratio:1000/720}
+ .spotlight-caption {padding:17px 19px}
+ .spotlight-caption h2 {font-size:25px}
+ .spotlight-caption p {font-size:11px}
+ .filter-group {gap:7px}
+ .filter-button {font-size:11px;min-height:44px;padding:8px 14px}
+ .work-tools {gap:17px;padding-bottom:19px}
+ .work-search input {height:48px;font-size:16px}
+ .search-symbol {top:15px}
+ .search-clear {height:44px;top:2px}
+ .collection-meta {margin-block:18px 22px}
+ .collection-meta>p:last-child {display:none}
+ .collection-meta>p {font-size:11px}
+ .media-layout {gap:23px}
+ .media-copy h3 {font-size:25px}
+ .media-copy>p {font-size:14px}
+ .media-copy .media-spec {font-size:9px}
+ .media-copy .fine-print {font-size:10px}
+ .video-transcript {font-size:11px;margin-top:18px}
+ .works-closing {padding:44px 0 50px}
+ .works-closing h2 {font-size:25px}
+ .works-closing p:not(.eyebrow) {font-size:12px}
+ .works-closing .button {font-size:12px}
+ .site-footer {padding:46px 0 20px}
+ .footer-top {grid-template-columns:1fr;gap:32px;padding-bottom:31px}
+ .footer-intro h2 {font-size:29px}
+ .footer-intro>p:last-child {font-size:11px}
+ .contact-email {font-size:22px;line-height:1.6;margin-top:10px;padding-bottom:13px;margin-bottom:16px;gap:8px}
+ .contact-block>p {font-size:12px;gap:23px}
+ .footer-label {font-size:10px}
+ .footer-source {font-size:10px;margin-top:16px}
+ .footer-bottom {gap:20px;padding-block:22px}
+ .footer-wordmark {font-size:20px}
+ .footer-wordmark span {font-size:8px;letter-spacing:.1em}
+ .footer-bottom>p {display:none}
+ .back-to-top {font-size:10px}
+ .publication-note summary {font-size:10px}
+ .publication-content {font-size:10px}
+ .project-dialog {width:calc(100% - 24px);max-height:91vh;border-radius:6px}
+ .dialog-cover {height:185px}
+ .dialog-content {padding:24px 22px 28px}
+ .dialog-content h2 {font-size:24px}
+ #dialog-summary {font-size:13px}
+ .achievement {padding:15px 17px}
+ .achievement p {font-size:12px}
+ #dialog-note {font-size:10px}
+ #dialog-source {font-size:12px}
+ .dialog-close {width:44px;height:44px;top:10px;right:10px}
+}
+@media (max-width:360px) {
+ .container {width:calc(100% - 32px)}
+ .brand-department {font-size:17px}
+ .brand img {width:36px;height:36px}
+ .menu-label {display:none}
+ .menu-toggle {padding:9px}
+ .hero-actions {gap:8px}
+ .hero-actions .button {padding-inline:11px;gap:10px}
+ .filter-button {padding-inline:11px;font-size:10px}
+ .hero-visual figcaption {font-size:8px}
+ .contact-email {font-size:20px}
+}
+@media (prefers-reduced-motion:reduce) {
+ html {scroll-behavior:auto}
+ *,*::before,*::after {animation:none !important;transition:none !important}
+}
+@media print {
+ .utility-bar,.primary-nav,.menu-toggle,.skip-link,.work-tools,.hero-actions,.scroll-down,.back-to-top,.project-dialog,.video-wrap {display:none !important}
+ .site-header {position:static}
+ .container {width:100%}
+ body {background:white;color:black;font-size:11pt}
+ .section-pad {padding-block:22px}
+ .home-hero,.works-hero {padding-block:20px;gap:25px}
+ h1,.works-hero h1 {font-size:32pt}
+ h2 {font-size:23pt}
+ .site-footer {background:white;color:black}
+ .site-footer * {color:black !important}
+ .work-card,.values-grid,.resource-grid {break-inside:avoid}
+ a {text-decoration:underline}
+ .publication-content {display:block}
+}
+
+/* Photo slots and AI collaboration disclosure */
+.photo-section {background:var(--warm,#f4f0ee)}
+.photo-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.photo-card {margin:0;background:#fff;border:1px solid #dfd7d3;border-radius:6px;overflow:hidden}
+.photo-card img {display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.photo-card:nth-child(2) img {object-fit:contain;background:#39171c}
+.photo-card figcaption {padding:22px}
+.photo-card h3 {font-family:var(--serif);font-size:23px;line-height:1.5;margin:9px 0}
+.photo-card p {font-size:14px;line-height:1.85;color:var(--muted,#66585a)}
+.photo-status {display:inline-block;font-size:11px;letter-spacing:.05em;color:#57383d;border:1px solid #d6ccc7;border-radius:20px;padding:3px 10px}
+.photo-note {max-width:70ch;margin-top:24px;font-size:13px;line-height:1.85;color:var(--muted,#66585a)}
+.ai-disclosure {margin-top:16px;border-top:1px solid #5a3b40}
+.ai-disclosure summary {min-height:44px;align-items:center;padding:14px 0;font-size:13px}
+.ai-disclosure .publication-content {font-size:13px;max-width:85ch;padding:0 0 8px}
+@media(max-width:880px){.photo-grid{grid-template-columns:1fr 1fr}.photo-grid .photo-card:last-child{grid-column:1/-1;max-width:calc(50% - 13px)}}
+@media(max-width:600px){.photo-grid{grid-template-columns:1fr;gap:20px}.photo-grid .photo-card:last-child{grid-column:auto;max-width:none}.photo-card figcaption{padding:20px}.photo-card h3{font-size:22px}}
+@media print{.photo-card{break-inside:avoid}.ai-disclosure .publication-content{display:block}}
+
+
+/* Integrated project record page */
+.process-hero {display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:68px;align-items:center;padding-block:56px 78px}
+.process-hero .breadcrumb {margin-bottom:32px}
+.process-hero .hero-description {max-width:650px}
+.process-hero-visual {background:#eae2de;border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 24px 60px rgba(22,75,62,.10)}
+.process-hero-visual img {width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center}
+.process-hero-visual figcaption {display:flex;justify-content:space-between;gap:18px;padding:14px 18px;background:#f4f0ed;font-size:10px;color:var(--muted)}
+.integration-strip {background:var(--green);color:white}
+.integration-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.integration-item {padding:28px 30px;border-right:1px solid rgba(255,255,255,.18)}
+.integration-item:last-child {border-right:0}
+.integration-value {font:600 32px/1.2 var(--serif)}
+.integration-label {margin-top:7px;font-size:11px;color:#ddd3ce;letter-spacing:.06em}
+.deliverable-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.deliverable-card {display:flex;min-height:270px;flex-direction:column;padding:28px;border:1px solid var(--line);border-radius:6px;background:#fff;transition:transform .2s,background .2s}
+.deliverable-card:hover {transform:translateY(-4px);background:#f0eae7}
+.deliverable-index {font:500 12px/1.4 var(--serif);color:var(--green-2)}
+.deliverable-card h3 {font-family:var(--serif);font-size:27px;margin-top:40px}
+.deliverable-card p {font-size:13px;color:var(--muted);margin-top:12px}
+.deliverable-card .text-link {margin-top:auto;align-self:flex-start}
+.prompt-section {background:var(--warm);border-block:1px solid var(--line)}
+.prompt-list {border-top:1px solid #d3c7c1}
+.prompt-card {border-bottom:1px solid #d3c7c1}
+.prompt-card>summary {display:grid;grid-template-columns:58px minmax(0,1fr) auto;align-items:center;gap:18px;list-style:none;cursor:pointer;padding:24px 0}
+.prompt-number {font:500 18px/1 var(--serif);color:#876a6e}
+.prompt-title {font-family:var(--serif);font-size:22px;line-height:1.45}
+.prompt-toggle {font-size:24px;color:var(--green);transition:transform .2s}
+.prompt-card[open] .prompt-toggle {transform:rotate(45deg)}
+.prompt-content {padding:0 0 34px 76px;max-width:1000px}
+.prompt-note {font-size:13px;color:var(--muted);margin-bottom:15px}
+.prompt-box {position:relative;background:#fff;border:1px solid #dad3cf;border-radius:5px;padding:24px 24px 22px}
+.prompt-label {font-size:10px;letter-spacing:.12em;color:var(--green-2);margin-bottom:12px;font-weight:600}
+.prompt-box pre {margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.9 var(--sans);color:var(--ink)}
+.copy-prompt {margin-top:16px;border:1px solid #d1c7c1;background:#f6f2f0;border-radius:4px;padding:9px 13px;font-size:11px;color:var(--green)}
+.copy-prompt:hover {background:#eae3df}
+.copy-status {margin-left:9px;color:var(--muted)}
+.quality-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.78fr);gap:55px;align-items:start}
+.check-list {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check-item {display:flex;gap:13px;padding:18px;border:1px solid var(--line);border-radius:5px;background:#fff}
+.check-mark {display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:50%;background:#e5dbd6;color:var(--green);font-weight:700}
+.check-item h3 {font-size:14px}
+.check-item p {font-size:11px;color:var(--muted);margin-top:4px;line-height:1.7}
+.status-panel {background:#3d191e;color:#ece6e2;border-radius:6px;padding:30px}
+.status-panel .eyebrow {color:#cab7ad}
+.status-panel h3 {font-family:var(--serif);font-size:28px}
+.status-panel p {margin-top:15px;color:#d8cec9;font-size:13px}
+.status-panel ul {list-style:none;padding:0;margin:23px 0 0}
+.status-panel li {display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-top:1px solid rgba(255,255,255,.16);font-size:12px}
+.status-ready {color:#d3c4bb}
+.status-pending {color:#d4c5bc}
+.preview-grid {display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.preview-card {display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}
+.preview-card img {width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;transition:transform .35s}
+.preview-card:hover img {transform:scale(1.015)}
+.preview-copy {display:flex;justify-content:space-between;gap:18px;align-items:center;padding:21px 24px}
+.preview-copy h3 {font-family:var(--serif);font-size:22px}
+.preview-copy p {font-size:11px;color:var(--muted);margin-top:5px}
+.preview-arrow {font-size:25px;color:var(--green)}
+.record-closing {padding:70px 0;text-align:center;background:#f0eae7}
+.record-closing p:not(.eyebrow) {max-width:620px;margin:15px auto 26px;color:var(--muted);font-size:14px}
+.record-actions {display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+@media(max-width:1080px){.process-hero{gap:38px}.integration-item{padding:24px 20px}.deliverable-card{padding:24px}.prompt-content{padding-left:62px}.quality-layout{gap:32px}}
+@media(max-width:880px){.process-hero{grid-template-columns:1fr;padding-block:32px 54px}.process-hero-visual{max-width:680px}.integration-grid{grid-template-columns:1fr 1fr}.integration-item:nth-child(2){border-right:0}.integration-item:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.18)}.deliverable-grid{grid-template-columns:1fr}.deliverable-card{min-height:210px}.deliverable-card h3{margin-top:24px}.quality-layout{grid-template-columns:1fr}.preview-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.process-hero{gap:28px}.process-hero-visual figcaption{font-size:9px}.integration-item{padding:20px 16px}.integration-value{font-size:28px}.prompt-card>summary{grid-template-columns:38px minmax(0,1fr) auto;gap:10px;padding:20px 0}.prompt-title{font-size:18px}.prompt-content{padding-left:0}.prompt-box{padding:19px 17px}.prompt-box pre{font-size:12px}.check-list{grid-template-columns:1fr}.status-panel{padding:24px}.preview-copy{padding:18px}.record-closing{padding:50px 0}}
+@media print{.copy-prompt,.record-actions{display:none!important}.prompt-card>summary{padding-block:12px}.prompt-card .prompt-content{display:block!important}.process-hero-visual{box-shadow:none}.integration-strip{background:white;color:black}.integration-label{color:black}.status-panel{background:white;color:black;border:1px solid #999}.status-panel *{color:black!important}}
+
+ 
+/* Independent academic redesign. All style remains in this HTML. */
+:root{--ink:#202020;--green:#8b1e2d;--green-2:#8b1e2d;--sage:#e9d6cb;--paper:#fff;--warm:#f4f2ed;--line:#d7d3cb;--muted:#5b5955;--radius:0;--serif:Georgia,"Noto Serif CJK TC","Noto Serif TC","Songti TC","PMingLiU",serif}
+html{scroll-padding-top:168px}body{background:#fff}.utility-bar{background:#202020;color:#efede7}.site-header{background:#fff}
+.header-inner{display:grid;grid-template-columns:1fr auto;gap:0;min-height:0;padding-top:20px}.brand{padding-bottom:19px}.brand img{border-radius:0;width:48px;height:48px}.brand-university{letter-spacing:.12em}.brand-department{font-family:var(--serif);font-size:26px}
+.primary-nav{grid-column:1/-1;justify-content:space-between;border-top:1px solid var(--line);gap:24px}.primary-nav>a{padding:14px 0;min-height:50px;font-size:14px}.primary-nav>a:not(.nav-contact)::after{bottom:-1px;height:3px}.primary-nav .nav-contact{border:0;border-radius:0;padding:10px 0;background:transparent;color:var(--green)}.primary-nav .nav-contact:hover{background:transparent}
+h1{font-size:clamp(40px,4.8vw,66px);letter-spacing:-.035em;line-height:1.4}h2{letter-spacing:-.025em}.section-pad{padding-block:82px}.home-hero{gap:70px;padding-top:56px;padding-bottom:66px}.hero-kicker{background:transparent;border-left:3px solid var(--green);padding:0 0 0 12px;border-radius:0}.hero-visual{border-radius:0}.hero-visual>img{object-fit:contain}.hero-visual figcaption{position:static;border-radius:0;color:var(--muted);background:#fff;padding:12px 0;font-size:10px}.hero-actions{gap:14px}.hero-english{letter-spacing:.1em}.hero-footnote{margin-top:34px}.hero-description{font-size:16px}
+.button,.pill,.work-visual,.spotlight-card,.resource-grid,.filter-button,.project-dialog,.photo-card,.copy-prompt,.prompt-card{border-radius:0!important;box-shadow:none!important}.button-primary:hover{background:#651421;transform:none}.hero-actions .button-plain{border-bottom:1px solid var(--green)}.scroll-down{border-color:var(--line)}.about-section{background:var(--warm)}.values-grid,.value-item{border-color:var(--line)}.value-number{color:var(--green)}.value-item h3{font-size:23px}
+.learning-visual,.learning-visual figcaption{border-radius:0;background:var(--warm)}.featured-section,.projects-section{background:#f5f3ef;border-color:var(--line)}.resource-grid{border:0;grid-template-columns:1fr 1fr;gap:0 46px}.resource-card{border-right:0;border-top:1px solid var(--line);padding:24px 0}.resource-card:hover{background:#f4f2ed}.resource-card h3{margin-top:10px}.work-cover{aspect-ratio:1.65}.work-badge{border-radius:0;box-shadow:none;background:#ffffffef}.work-visual-arrow{border:1px solid var(--line)}.spotlight-card,.spotlight-caption{background:var(--warm)}.spotlight-card>img{aspect-ratio:1.65}.work-search input{background:white;border-color:var(--line);border-radius:0}.filter-button{border-color:var(--line);min-height:44px}.filter-button:hover:not(.is-active){background:#e8e3dc}.no-results{border-color:var(--line)}.empty-mark{background:#eee3df}.work-tools{border-color:var(--line)}.works-closing{background:var(--warm)}.circle-arrow{border-color:var(--line)}
+.site-footer{background:#202020;color:#eeeae3}.site-footer .eyebrow,.footer-intro>p:last-child,.footer-label,.contact-block>p>span,.footer-source,.footer-bottom>p,.back-to-top,.publication-note summary,.publication-content{color:#d5d0c8}.footer-bottom,.publication-note,.contact-email{border-color:#56524c}.contact-email:hover{color:#fff}.achievement{background:var(--warm);border-left-color:var(--green)}.project-dialog::backdrop{background:#171717bb;backdrop-filter:none}.dialog-close{border-color:var(--line)}.video-wrap,.video-wrap video{background:#201a1b;border-radius:0}.fine-print{font-size:12px}.photo-frame,.photo-tag{border-radius:0!important}
+.process-hero{border-bottom:1px solid var(--line)}.integration-strip{background:var(--warm)}.prompt-box{border-radius:0;background:var(--warm)}.prompt-card pre{overflow-wrap:anywhere;white-space:pre-wrap}.prompt-card,.prompt-content{min-width:0}.record-closing{background:var(--warm)}.publication-note>p{font-size:11px;line-height:1.9;color:#d5d0c8;margin-bottom:12px}
+.process-table-wrap{overflow:auto;max-width:100%;margin-top:25px}.process-table{border-collapse:collapse;width:100%;font-size:13px}.process-table th,.process-table td{text-align:left;padding:15px 12px;border-bottom:1px solid var(--line);vertical-align:top}.process-table th{background:var(--warm)}.process-tools{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}.process-tools button{min-height:44px;background:var(--green);color:white;border:1px solid var(--green);padding:10px 16px;font:inherit;font-size:13px}.source-links{padding-left:22px;line-height:2.2;font-size:14px}.source-links a{text-decoration:underline}.design-note{border-left:3px solid var(--green);background:var(--warm);padding:22px;margin-top:24px;font-size:14px}
+@media(min-width:881px){.menu-toggle{display:none!important}.header-inner:after{content:"TZU CHI UNIVERSITY";font:13px Georgia,serif;letter-spacing:.09em;color:var(--muted);grid-column:2;grid-row:1;align-self:center;padding-bottom:19px}}
+@media(max-width:1100px){.home-hero{gap:35px}.primary-nav{gap:15px}.primary-nav>a{font-size:13px}}
+@media(max-width:880px){html{scroll-padding-top:112px}.header-inner{display:flex;padding-top:0;min-height:83px}.brand{padding:0}.brand-department{font-size:21px}.menu-toggle{border-radius:0}.primary-nav{border-top:0}.primary-nav>a{font-size:15px;padding:12px 0}.hero-visual{border-radius:0}.home-hero{gap:30px}.resource-grid{grid-template-columns:1fr 1fr;gap:0 24px}.resource-card{border:0;border-top:1px solid var(--line)}.section-pad{padding-block:56px}.hero-description{font-size:15px}}
+@media(max-width:560px){.container{width:calc(100% - 36px)}.brand-department{font-size:20px}.home-hero{padding-top:34px}h1,.works-hero h1{font-size:42px}.hero-visual>img{max-height:none}.hero-kicker{font-size:11px}.resource-grid{grid-template-columns:1fr}.resource-card{padding:21px 0}.resource-card h3{font-size:24px}.hero-description{font-size:14px}.process-table{font-size:12px}.process-table th,.process-table td{padding:10px 7px}.section-heading-end{max-width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+@media print{.site-header,.utility-bar,.site-footer,.process-tools,.copy-prompt{display:none!important}.container{width:100%}.prompt-card{break-inside:avoid}details::details-content{display:block}.section-pad{padding-block:25px}body{background:white;color:black}}
+</style>
+</head>
+<body data-site-version="tcu-academic-final-20261015" id="top">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<div class="utility-bar"><div class="container utility-inner">
+<span>慈濟大學 <span class="utility-separator">/</span> 智慧永續管理學院</span>
+<div><a href="https://www.tcu.edu.tw/" rel="noopener noreferrer" target="_blank">慈大首頁 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a><a href="https://mdm.tcu.edu.tw/index.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">官方公告 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a></div>
+</div></div>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="慈濟大學經營管理學系，回首頁" class="brand" href="index.html">
+<img alt="" height="48" src="graph/brand-mark.svg" width="48"/>
+<span class="brand-copy"><span class="brand-university">慈濟大學</span><span class="brand-department">經營管理學系</span></span>
+</a>
+<button aria-controls="primary-nav" aria-expanded="false" class="menu-toggle" type="button"><span aria-hidden="true" class="menu-bars"></span><span class="menu-label">選單</span></button>
+<nav aria-label="主要導覽" class="primary-nav" id="primary-nav">
+<a href="index.html">系所簡介</a>
+<a href="studentworks.html">學生作品</a>
+<a href="index.html#learning">學習特色</a>
+<a href="index.html#resources">系所資源</a>
+<a aria-current="page" href="ai-collaboration.html">製作紀錄</a>
+<a class="nav-contact" href="#contact">聯絡我們 <span aria-hidden="true">↗</span></a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section aria-labelledby="process-title" class="process-hero container">
+<div>
+<nav aria-label="麵包屑" class="breadcrumb"><a href="index.html">首頁</a><span aria-hidden="true">/</span><span aria-current="page">製作紀錄</span></nav>
+<p class="eyebrow">AI COLLABORATION / PROJECT RECORD</p>
+<h1 id="process-title">把需求、設計與測試，<br/>整理成可追蹤的製作紀錄。</h1>
+<p class="hero-description">本頁收錄本次「系網工程師」作業的完整 Prompt、內容調整原因、網站整合結果與品質檢查。訪客可從同一套導覽前往系所簡介與學生作品頁。</p>
+<div class="hero-actions"><a class="button button-primary" href="#prompts">查看完整 Prompt <span aria-hidden="true">↓</span></a><a class="button button-plain" href="studentworks.html">前往學生作品 <span aria-hidden="true">→</span></a></div>
+</div>
+<figure class="process-hero-visual"><img alt="人文、商業與永續的原創意象，非校園實拍" fetchpriority="high" height="900" src="graph/hero-world.svg" width="1440"/><figcaption><span>ACADEMIC EDITION</span><span>原創學術設計意象</span></figcaption></figure>
+</section>
+<section aria-label="整合成果摘要" class="integration-strip"><div class="container integration-grid">
+<div class="integration-item"><p class="integration-value">3</p><p class="integration-label">互相串聯的正式頁面</p></div>
+<div class="integration-item"><p class="integration-value">9</p><p class="integration-label">完整使用者 Prompt</p></div>
+<div class="integration-item"><p class="integration-value">7</p><p class="integration-label">本機圖片與影片素材</p></div>
+<div class="integration-item"><p class="integration-value">0</p><p class="integration-label">外部 CSS／JS 套件</p></div>
+</div></section>
+<section aria-labelledby="deliverables-title" class="section-pad"><div class="container">
+<div class="section-heading"><div><p class="eyebrow">ONE WEBSITE, ONE ENTRY</p><h2 id="deliverables-title">一個入口，<br/>整合所有網站成果。</h2></div><p class="section-heading-end">開啟 index.html 後，即可透過導覽使用整套網站，不需要逐一尋找分散檔案。</p></div>
+<div class="deliverable-grid">
+<a class="deliverable-card" href="index.html"><span class="deliverable-index">01 / INTRODUCTION</span><h3>系所簡介首頁</h3><p>介紹教育定位、學習特色、精選學生作品、系所資源與聯絡資訊。</p><span class="text-link">開啟首頁 <span aria-hidden="true">↗</span></span></a>
+<a class="deliverable-card" href="studentworks.html"><span class="deliverable-index">02 / STUDENT WORKS</span><h3>學生作品展示</h3><p>包含作品搜尋與分類、成果介紹、攝影預留區以及本機影片播放。</p><span class="text-link">瀏覽作品 <span aria-hidden="true">↗</span></span></a>
+<a class="deliverable-card" href="#prompts"><span class="deliverable-index">03 / PROCESS</span><h3>AI 協作與測試</h3><p>公開完整 Prompt、製作分工、設計參考與檔案端驗收結果。</p><span class="text-link">閱讀紀錄 <span aria-hidden="true">↓</span></span></a>
+</div>
+</div></section>
+<section aria-labelledby="prompts-title" class="prompt-section section-pad" id="prompts"><div class="container">
+<div class="section-heading"><div><p class="eyebrow">COMPLETE PROMPT LOG</p><h2 id="prompts-title">所有交給 AI 的 Prompt</h2></div><div class="section-heading-end"><p>依照實際對話順序整理；老師允許不附 AI 回覆，因此本頁以 Prompt 與使用目的為主。</p></div><div class="process-tools"><a class="button button-primary" download="" href="AI-COLLABORATION-FULL.txt">下載完整 Prompt 紀錄</a><button id="copy-all" type="button">複製全部 Prompt</button><button id="expand-all" type="button">展開全部</button><button id="collapse-all" type="button">收合全部</button></div><p aria-live="polite" class="fine-print" id="copy-all-status"></p></div>
+<div class="prompt-list"><details class="prompt-card">
+<summary><span class="prompt-number">01</span><span class="prompt-title">說明系所身分</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：先說明自己是慈濟大學經管系學生，讓網站主題與文字以本系為對象，而不是一般企業或其他科系。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-1">我是慈濟大學經管系的學生</pre><button class="copy-prompt" data-copy-target="prompt-1" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">02</span><span class="prompt-title">提出正式系網需求</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：將老師原始要求完整交給 AI，明確限定兩個頁面的檔名、graph 素材資料夾、正式風格，以及之後要加入照片、影片的需求。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-2">假設您已錄取為本系所的系網工程師。系主任請你為本系設計系網頁。
+
+- 請替你的系所，設計新的系網頁。
+- 這是一個跨周的大型作業。
+- 可以用 AI 協作。
+- **至少**必須有兩頁：index.html (系所簡介)、studentworks.html (學生作品)，所有的圖片影片則放在graph的資料夾內。
+- 後續課程會要求大家拍攝照片、製作影片，然後加入到這個系網頁。
+- 此為個人作業，可自行決定風格，決定內容。
+- 請想像這個是正式的網站，不是作業，而是真正要上線的作品，請勿用戲謔、好笑的內容或風格，除非您確認真的需要。</pre><button class="copy-prompt" data-copy-target="prompt-2" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">03</span><span class="prompt-title">調整展示內容</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：檢視 AI 產出的內容後，要求刪除不希望出現在系網的特定專案，讓內容選擇仍由我決定。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-3">幫我把嶼食織心在網頁去除掉</pre><button class="copy-prompt" data-copy-target="prompt-3" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">04</span><span class="prompt-title">提供第一版評分項目</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：把評分標準提供給 AI，讓調整不只停留在美觀，也要注意檔案結構、頁面連結與發布條件。當時貼上的項目合計為 80%，不是完整 100 分評分表。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-4">我希望景可能得拿到滿分基本檔案與目錄結構 (30%)
+
+- **首頁建置 (10%)**：必須包含一個檔名為小寫 `index.html` 的檔案作為系所簡介首頁，系統才會自動抓取為網站首頁。
+- **子頁面建置 (10%)**：必須包含一個名為 `studentworks.html` 的檔案，作為學生作品展示頁。
+- **素材資料夾 (10%)**：必須建立一個名為 `graph` 的資料夾，且網頁中使用的「所有」圖片與影片，都必須集中放置於此資料夾內。
+
+#### 二、 GitHub 上架與網址發布 (30%)
+
+- **專案建置與公開 (10%)**：網頁檔案必須上傳至 GitHub，且 Repository (專案儲存庫) 必須設定為「Public (公開)」。建議您可以參考「網頁視覺設計」的命名方式，將專案命名為 `你的帳號.github.io` 或 `網頁視覺設計`。
+- **網頁正式上線 (20%)**：必須成功進入 Settings 開啟 GitHub Pages 伺服器功能，將 Branch 設定為 `main` 並儲存。最終必須能產生並繳交一段真實的網頁網址（如 `https://...`），讓全世界都能透過該網址正常瀏覽。
+
+#### 三、 頁面串聯與相對路徑 (20%)
+
+- **跨網頁導覽連結 (10%)**：`index.html` 與 `studentworks.html` 兩個頁面之間必須有超連結，能夠讓使用者順暢地互相點擊切換，不能出現「找不到網頁 (404)」的錯誤。
+- **外部檔案讀取 (10%)**：網頁中的圖片或影片標籤（如 `&lt;img&gt;`），必須正確使用「相對路徑」來讀取 `graph` 資料夾內的檔案（例如 `src="graph/圖片名稱.jpg"`）。</pre><button class="copy-prompt" data-copy-target="prompt-4" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">05</span><span class="prompt-title">要求輸出 HTML 檔案</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：要求拿到實際的 HTML 檔，而不只是設計說明或截圖，方便開啟、編輯與上傳。也需要保留圖片與影片所需的 graph 資料夾。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-5">可以幫我輸出**html** 檔嗎</pre><button class="copy-prompt" data-copy-target="prompt-5" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">06</span><span class="prompt-title">補上新版評分標準與 AI 協作要求</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：補上專業度、版面完整度與 AI 協作加分，讓製作內容與最新規範對齊。這則訊息後半的 internal CSS、風格轉換 Prompt 是老師的示範文字，不是我另外執行過的兩次指令。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-6">現在變更了我的評分表準
+
+**系網頁設計 (評分標準)**
+
+本作業為模擬真實專案上線的正式系所網頁，總分為 100 分。
+
+**一、 基本檔案與目錄結構 (30%)**
+
+- **首頁建置 (10%)**：必須包含一個檔名為小寫 index.html 的檔案作為系所簡介首頁，系統才會自動抓取為網站首頁。
+- **子頁面建置 (10%)**：必須包含一個名為 studentworks.html 的檔案，作為學生作品展示頁。
+- **素材資料夾 (10%)**：必須建立一個名為 graph 的資料夾，且網頁中使用的「所有」圖片與影片，都必須集中放置於此資料夾內。
+
+**二、 GitHub 上架與網址發布 (30%)**
+
+- **專案建置與公開 (10%)**：網頁檔案必須上傳至 GitHub，且 Repository (專案儲存庫) 必須設定為「Public (公開)」。建議您可以參考「網頁視覺設計」的命名方式，將專案命名為 你的帳號.github.io 或 網頁視覺設計。
+- **網頁正式上線 (20%)**：必須成功進入 Settings 開啟 GitHub Pages 伺服器功能，將 Branch 設定為 main 並儲存。最終必須能產生並繳交一段真實的網頁網址（如 [https://...），讓全世界都能透過該網址正常瀏覽。](https://...），讓全世界都能透過該網址正常瀏覽。)
+
+**三、 頁面串聯與相對路徑 (20%)**
+
+- **跨網頁導覽連結 (10%)**：index.html 與 studentworks.html 兩個頁面之間必須有超連結，能夠讓使用者順暢地互相點擊切換，不能出現「找不到網頁 (404)」的錯誤。
+- **外部檔案讀取 (10%)**：網頁中的圖片或影片標籤（如 \&lt;img&gt;），必須正確使用「相對路徑」來讀取 graph 資料夾內的檔案（例如 src="graph/圖片名稱.jpg"）。
+
+**四、 內容專業度與設計風格 (20%)**
+
+- **正式與專業度 (10%)**：此為正式上線之作品，內容文字與圖片必須符合「系所網頁」之專業形象。禁止使用戲謔、好笑或不雅的內容風格（除非有合理的設計理念並事先報備）。
+- **版面完整度 (10%)**：可自行決定風格與內容編排，但必須具備基本的網頁骨架與閱讀流暢度。後續課程將會要求加入自行拍攝的照片與影片，因此版面需預留相關空間。
+
+**彈性與加分項目 (Bonus)**
+
+- **AI 協作紀錄 (+10%)**：本作業允許使用 AI 協作，若能將與 AI 討論架構、除錯或生成樣式的對話紀錄（或提示詞心得）附於網頁底部或另外繳交，可獲額外加分。
+
+請把你在"系網工程師"的AI對話過程，貼在這裡。
+
+(必須貼上所有你給AI的prompt，至於AI的回應，可不須貼上，但可補充記錄你為何要下這個prompt)
+
+例如：
+
+Prompt：請到[http://xxx.tcu.edu.tw..........擷取該網頁內容，該網頁是一個系所介紹。請幫我把這個網頁的內容，重新設計成一個新的網頁。這個新網頁，必須使用internal](http://xxx.tcu.edu.tw..........擷取該網頁內容，該網頁是一個系所介紹。請幫我把這個網頁的內容，重新設計成一個新的網頁。這個新網頁，必須使用internal) CSS，也就是所有的CSS都必須包含在同一個html裡面。如果有用到js，也同樣包含在同一個html裡面。
+
+筆記：AI給我的回應是一個html檔案，的確沒有包含其他的css檔案。但我覺得風格不是我要的，所以我下一步希望能變更風格.......
+
+Prompt：請幫我把剛剛產生的html檔案，變更為另一種風格，我希望有專業學術的美國頂尖大學風格(或"日本設計相關科系簡單簡約風格"........)。</pre><button class="copy-prompt" data-copy-target="prompt-6" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">07</span><span class="prompt-title">要求整合成可使用的完整網站</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：前次交付包含多個分散檔案，因此要求整合成單一網站包；訪客從 index.html 進入後，可以使用導覽前往系所簡介、學生作品與完整 AI 製作紀錄。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-7"># Selected text:
+
+## Selection 1
+index.htmlHTML開啟檔案studentworks.htmlHTML開啟檔案   AI-COLLABORATION-FULL.txt文件開啟檔案tcu-rubric-home-preview.png圖像開啟檔案tcu-rubric-works-preview.png圖像開啟檔案   TESTING.md文件開啟檔案
+
+## My request:
+我需要你給我一個是可以整合你所有的作品網站是可以給人做使用的</pre><button class="copy-prompt" data-copy-target="prompt-7" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">08</span><span class="prompt-title">指定本系官網與哈佛經濟系作為參考</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：提供本系公開內容來源與明確的學術網站參考，讓 AI 調整資訊架構、閱讀層級及視覺風格。參考不表示使用哈佛校徽、照片、師資或研究成果。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-8">[https://mdm.tcu.edu.tw/](https://mdm.tcu.edu.tw/)這是我們慈濟大學 經管系，我希望做的跟哈佛大學 經濟系一樣[https://www.economics.harvard.edu/](https://www.economics.harvard.edu/)</pre><button class="copy-prompt" data-copy-target="prompt-8" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details><details class="prompt-card">
+<summary><span class="prompt-number">09</span><span class="prompt-title">要求最新版整合與完整評分驗收</span><span aria-hidden="true" class="prompt-toggle">＋</span></summary>
+<div class="prompt-content">
+<p class="prompt-note">後補筆記（供本人確認）：再次提供完整評分規範，要求更新、整合並驗收。後段範例是老師的示範，保留於本則原文，不虛列為額外執行的 Prompt。是否給分及加分由授課老師決定。</p>
+<div class="prompt-box"><p class="prompt-label">PROMPT 原文</p><pre id="prompt-9">我要拿滿分，全物做好再輸出一版最新版給我，系網頁設計 (評分標準)
+
+本作業為模擬真實專案上線的正式系所網頁，總分為 100 分。
+
+#### 一、 基本檔案與目錄結構 (30%)
+
+- **首頁建置 (10%)**：必須包含一個檔名為小寫 `index.html` 的檔案作為系所簡介首頁，系統才會自動抓取為網站首頁。
+- **子頁面建置 (10%)**：必須包含一個名為 `studentworks.html` 的檔案，作為學生作品展示頁。
+- **素材資料夾 (10%)**：必須建立一個名為 `graph` 的資料夾，且網頁中使用的「所有」圖片與影片，都必須集中放置於此資料夾內。
+
+#### 二、 GitHub 上架與網址發布 (30%)
+
+- **專案建置與公開 (10%)**：網頁檔案必須上傳至 GitHub，且 Repository (專案儲存庫) 必須設定為「Public (公開)」。建議您可以參考「網頁視覺設計」的命名方式，將專案命名為 `你的帳號.github.io` 或 `網頁視覺設計`。
+- **網頁正式上線 (20%)**：必須成功進入 Settings 開啟 GitHub Pages 伺服器功能，將 Branch 設定為 `main` 並儲存。最終必須能產生並繳交一段真實的網頁網址（如 `https://...`），讓全世界都能透過該網址正常瀏覽。
+
+#### 三、 頁面串聯與相對路徑 (20%)
+
+- **跨網頁導覽連結 (10%)**：`index.html` 與 `studentworks.html` 兩個頁面之間必須有超連結，能夠讓使用者順暢地互相點擊切換，不能出現「找不到網頁 (404)」的錯誤。
+- **外部檔案讀取 (10%)**：網頁中的圖片或影片標籤（如 `&lt;img&gt;`），必須正確使用「相對路徑」來讀取 `graph` 資料夾內的檔案（例如 `src="graph/圖片名稱.jpg"`）。
+
+#### 四、 內容專業度與設計風格 (20%)
+
+- **正式與專業度 (10%)**：此為正式上線之作品，內容文字與圖片必須符合「系所網頁」之專業形象。禁止使用戲謔、好笑或不雅的內容風格（除非有合理的設計理念並事先報備）。
+- **版面完整度 (10%)**：可自行決定風格與內容編排，但必須具備基本的網頁骨架與閱讀流暢度。後續課程將會要求加入自行拍攝的照片與影片，因此版面需預留相關空間。
+
+#### 彈性與加分項目 (Bonus)
+
+- **AI 協作紀錄 (+10%)**：本作業允許使用 AI 協作，若能將與 AI 討論架構、除錯或生成樣式的對話紀錄（或提示詞心得）附於網頁底部或另外繳交，可獲額外加分。
+
+
+
+請把你在"系網工程師"的AI對話過程，貼在這裡。
+
+(必須貼上所有你給AI的prompt，至於AI的回應，可不須貼上，但可補充記錄你為何要下這個prompt)
+
+例如：
+
+Prompt：請到[http://xxx.tcu.edu.tw..........擷取該網頁內容，該網頁是一個系所介紹。請幫我把這個網頁的內容，重新設計成一個新的網頁。這個新網頁，必須使用internal](http://xxx.tcu.edu.tw..........擷取該網頁內容，該網頁是一個系所介紹。請幫我把這個網頁的內容，重新設計成一個新的網頁。這個新網頁，必須使用internal) CSS，也就是所有的CSS都必須包含在同一個html裡面。如果有用到js，也同樣包含在同一個html裡面。
+
+筆記：AI給我的回應是一個html檔案，的確沒有包含其他的css檔案。但我覺得風格不是我要的，所以我下一步希望能變更風格.......
+
+Prompt：請幫我把剛剛產生的html檔案，變更為另一種風格，我希望有專業學術的美國頂尖大學風格(或"日本設計相關科系簡單簡約風格"........)。
+
+筆記：AI產生的第二個網頁的色調......，我想要變更.....
+
+Prompt：還有哪一類的色調組合建議，請列出讓我挑選</pre><button class="copy-prompt" data-copy-target="prompt-9" type="button">複製這則 Prompt<span aria-live="polite" class="copy-status"></span></button></div>
+</div>
+</details></div>
+</div></section>
+<section class="section-pad" id="rubric"><div class="container"><p class="eyebrow">RUBRIC &amp; VERIFICATION</p><h2>對照要求，分開驗收。</h2><p class="section-description">以下標示實作位置，不是自行給分。檔案、版面與互動的測試結果列於 TESTING.md；GitHub 公開發布另見 PUBLISH-STATUS.json。</p><div class="process-table-wrap"><table class="process-table"><thead><tr><th>項目</th><th>配分</th><th>本版對應</th></tr></thead><tbody><tr><td>基本檔案與素材</td><td>30%</td><td>根目錄 index.html、studentworks.html，所有圖片與影片集中在 graph。</td></tr><tr><td>GitHub 與公開網址</td><td>30%</td><td>核對 Public、main / root、實際發布結果與公開網址。</td></tr><tr><td>頁面串聯與相對路徑</td><td>20%</td><td>兩主頁及紀錄頁互相導覽，graph/ 相對路徑。</td></tr><tr><td>正式與完整設計</td><td>20%</td><td>學術風格、公開來源、響應式版面、攝影版位與影片。</td></tr><tr><td>AI 協作紀錄</td><td>+10%</td><td>九則真實使用者 Prompt 與後補筆記，可下載 TXT。</td></tr></tbody></table></div><p class="fine-print">自行拍攝的照片與影片尚未提供，目前只預留版位。AI 工具執行的檢查，不描述為學生親自完成；老師決定最終成績。</p></div></section>
+<section class="section-pad" id="sources"><div class="container"><p class="eyebrow">REFERENCE &amp; SOURCES</p><h2>參考架構，不複製身分。</h2><p class="section-description">以慈濟經管公開內容為依據，參考哈佛經濟系將系所、課程、研究與資源分層的方式。重新撰寫與編排，使用深紅、黑白、米灰及襯線標題，保留慈濟的系所身分。</p><ol class="source-links"><li><a href="https://www.economics.harvard.edu/" rel="noopener noreferrer" target="_blank">Harvard Department of Economics：資訊層級參考 ↗</a></li><li><a href="https://mdm.tcu.edu.tw/?Lang=zh-tw" rel="noopener noreferrer" target="_blank">慈濟大學經營管理學系：系所與聯絡資訊 ↗</a></li><li><a href="https://mdm.tcu.edu.tw/p/412-1021-2.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">官方系所介紹與學習特色 ↗</a></li><li><a href="https://itm.tcu.edu.tw/p/404-1022-58627.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">2025 專題競賽公開獲獎公告 ↗</a></li></ol><div class="design-note">查閱日期：2026-10-15。沒有使用哈佛校徽、人物、照片、統計或原始碼。作品不推定未公開的成效；所有插圖與影片為原創設計意象，不是自行拍攝的活動素材。完整來源見交付包 SOURCES.md。</div></div></section>
+<section class="record-closing"><div class="container"><p class="eyebrow">READY TO EXPLORE</p><h2>從首頁開始，使用完整網站。</h2><p>所有頁面、素材與製作紀錄已放入同一個網站資料夾；公開上線時請整包上傳，不要只上傳單一 HTML。</p><div class="record-actions"><a class="button button-primary" href="index.html">前往系所首頁 <span aria-hidden="true">↗</span></a><a class="button button-plain" href="studentworks.html">瀏覽學生作品 <span aria-hidden="true">→</span></a></div></div></section>
+</main>
+<footer class="site-footer" id="contact">
+<div class="container footer-top">
+<div class="footer-intro"><p class="eyebrow">LET’S CONNECT</p><h2>下一個故事，<br/>從這裡開始。</h2><p>認識經管、探索課程，或開啟合作的可能。</p></div>
+<address class="contact-block">
+<span class="footer-label">系辦公室聯絡資訊</span>
+<a class="contact-email" href="mailto:ss62@gms.tcu.edu.tw">ss62@gms.tcu.edu.tw <span aria-hidden="true">↗</span></a>
+<p><span>電話</span><a href="tel:+88638572677">03-857-2677 分機 31682</a></p>
+<p><span>地址</span>花蓮市介仁街 67 號</p>
+<a class="footer-source" href="https://mdm.tcu.edu.tw/index.php?Lang=zh-tw" rel="noopener noreferrer" target="_blank">前往現行系網確認最新資訊 <span aria-hidden="true">↗</span><span class="sr-only">（另開視窗）</span></a>
+</address>
+</div>
+<div class="container footer-bottom">
+<div class="footer-wordmark">TCU<span>BUSINESS MANAGEMENT</span></div>
+<p>人文為本，專業為用。</p>
+<a class="back-to-top" href="#top">回到頂端 <span aria-hidden="true">↑</span></a>
+</div>
+<div class="container publication-note"><p>系網設計提案，非校方官方網站。系務資訊以正式公告為準。原創意象插圖，非校園或產品實拍。</p>
+<details>
+<summary>內容來源與網站聲明 <span aria-hidden="true">＋</span></summary>
+<div class="publication-content">
+<p>本網站為系網設計提案，並非校方正式發布的網站；課程、招生、實習及成果，仍以原始官方公告為準。</p>
+<p>頁面插圖、編輯封面、預覽畫面與無聲短片為本次網站製作素材，不是校園、人物或研究成果的實拍；識別圖形不是慈濟大學校徽。</p>
+<p>本站沒有登入、表單收件、追蹤程式或後台；正式發布前，須完成校方內容與識別授權審核。</p>
+</div>
+</details>
+<details class="ai-disclosure" id="ai-collaboration" open="">
+<summary>AI 協作與製作紀錄 <span aria-hidden="true">＋</span></summary>
+<div class="publication-content">
+<p>本頁整理本次網站製作使用的所有 Prompt、分工與測試摘要；AI 回覆依作業規範未全文附上。</p>
+</div>
+</details>
+</div>
+</footer>
+<script>
+"use strict";
+document.documentElement.classList.add("js");
+(() => {
+ const menuButton=document.querySelector(".menu-toggle");
+ const menu=document.querySelector("#primary-nav");
+ if(!menuButton||!menu)return;
+ const closeMenu=(focus=false)=>{menu.classList.remove("is-open");menuButton.setAttribute("aria-expanded","false");if(focus)menuButton.focus();};
+ menuButton.addEventListener("click",()=>{const open=menuButton.getAttribute("aria-expanded")==="true";menuButton.setAttribute("aria-expanded",String(!open));menu.classList.toggle("is-open",!open);});
+ menu.addEventListener("click",event=>{if(event.target.closest("a"))closeMenu();});
+ document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menu.classList.contains("is-open"))closeMenu(true);});
+ document.addEventListener("click",event=>{if(!menu.contains(event.target)&&!menuButton.contains(event.target))closeMenu();});
+ window.matchMedia("(min-width:881px)").addEventListener("change",event=>{if(event.matches)closeMenu();});
+})();
+(() => {
+ document.querySelectorAll("[data-copy-target]").forEach(button=>{
+  button.addEventListener("click",async()=>{
+   const target=document.getElementById(button.dataset.copyTarget);
+   const status=button.querySelector(".copy-status");
+   if(!target)return;
+   let copied=false;
+   try{await navigator.clipboard.writeText(target.textContent);copied=true;}catch(_error){
+    const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+    try{copied=document.execCommand("copy");}catch(_fallbackError){copied=false;}selection.removeAllRanges();
+   }
+   status.textContent=copied?"已複製":"請手動選取";
+   window.setTimeout(()=>{status.textContent="";},1800);
+  });
+ });
+})();
+</script>
+<script>
+document.getElementById("expand-all").addEventListener("click",()=>document.querySelectorAll(".prompt-card").forEach(d=>d.open=true));
+document.getElementById("collapse-all").addEventListener("click",()=>document.querySelectorAll(".prompt-card").forEach(d=>d.open=false));
+window.addEventListener("beforeprint",()=>document.querySelectorAll(".prompt-card").forEach(d=>d.open=true));
+document.getElementById("copy-all").addEventListener("click",async()=>{
+const text=[...document.querySelectorAll(".prompt-card")].map(d=>"Prompt：\n"+d.querySelector("pre").textContent+"\n\n"+d.querySelector(".prompt-note").textContent).join("\n\n====================\n\n"),status=document.getElementById("copy-all-status");
+try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);else{const area=document.createElement("textarea");area.value=text;area.style.cssText="position:fixed;left:-9999px";document.body.append(area);area.select();const ok=document.execCommand("copy");area.remove();if(!ok)throw new Error("copy");}status.textContent="已複製九則 Prompt 與後補筆記，請閱讀確認後繳交。";}
+catch{status.textContent="瀏覽器限制複製，請下載上方完整 TXT 檔。"}
+});</script></body>
+</html>
